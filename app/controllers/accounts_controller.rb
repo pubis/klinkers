@@ -12,7 +12,9 @@ class AccountsController < ApplicationController
   end
   
   def new
-    #@account = current_user.accounts.new
+  end
+  
+  def edit
   end
   
   def create
@@ -23,6 +25,14 @@ class AccountsController < ApplicationController
     else
       flash.now.alert "Could not create account!"
       render "new"
+    end
+  end
+
+  def update
+    if @account.update_attributes(params[:account])
+      redirect_to @account, :notice => "Account saved!"
+    else
+      render "edit"
     end
   end
 end
