@@ -6,3 +6,10 @@
       new: New
       list: List
     categories: Categories
+
+  sidebar:
+    header:
+      shortcuts: Shortcuts
+    shortcuts:
+      new_account: New account
+      cash_flow: Cash Flow

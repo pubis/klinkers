@@ -1,4 +1,9 @@
 en:
+  actions: Actions
+  action:
+    edit: Edit
+    delete: Delete
+
   accounts:
     favorites: Favorite accounts
     others: Other accounts

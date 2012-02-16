@@ -1,6 +1,11 @@
 "sv-SE":
+  actions: Åtgärder
+  action:
+    edit: Redigera
+    delete: Ta bort
+
   accounts:
-    favorites: Favorit konton
+    favorites: Favoritkonton
     others: Övriga konton
     
   sum: Summa

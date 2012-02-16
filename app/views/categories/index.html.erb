@@ -12,12 +12,12 @@
 </div>
 <div class="row-fluid">
 	<div class="span6">
-		<h2>Income categories</h2>
+		<h2><%= t('categories.headers.income') %></h2>
 		<table class="table table-striped table-bordered">
 			<thead>
 			<tr>
-				<th colspan="2">Name</th>
-				<th>Actions</th>
+				<th colspan="2"><%= Category.human_attribute_name(:name) %></th>
+				<th><%= t('actions') %></th>
 			</tr>
 			</thead>
 			<tbody>
@@ -30,14 +30,14 @@
 				<td>
 					<div class="btn-group">
 						<a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
-							Actions
+							<%= t('actions') %>
 							<span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu">
-							<li><%= link_to "<i class=\"icon-edit\"></i> Edit".html_safe, edit_category_path(category) %></li>
-							<li><%= link_to "<i class=\"icon-trash\"></i> Delete".html_safe, category, :method => :delete, :confirm => "Are you sure?" %></li>
+							<li><%= link_to "<i class=\"icon-edit\"></i> #{t('action.edit')}".html_safe, edit_category_path(category) %></li>
+							<li><%= link_to "<i class=\"icon-trash\"></i> #{t('action.delete')}".html_safe, category, :method => :delete, :confirm => "Are you sure?" %></li>
 							<li class="divider"></li>
-							<li><%= link_to "<i class=\"icon-pencil\"></i> New child".html_safe, new_category_path(:parent => category.id) %></li>
+							<li><%= link_to "<i class=\"icon-pencil\"></i> #{t('categories.action.new_child')}".html_safe, new_category_path(:parent => category.id) %></li>
 						</ul>
 					</div>
 				</td>
@@ -52,12 +52,12 @@
 				<td>
 					<div class="btn-group">
 						<a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
-							Actions
+							<%= t('actions') %>
 							<span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu">
-							<li><%= link_to "<i class=\"icon-edit\"></i> Edit".html_safe, edit_category_path(child) %></li>
-							<li><%= link_to "<i class=\"icon-trash\"></i> Delete".html_safe, child, :method => :delete, :confirm => "Are you sure?" %></li>
+							<li><%= link_to "<i class=\"icon-edit\"></i> #{t('action.edit')}".html_safe, edit_category_path(child) %></li>
+							<li><%= link_to "<i class=\"icon-trash\"></i> #{t('action.delete')}".html_safe, child, :method => :delete, :confirm => "Are you sure?" %></li>
 						</ul>
 					</div>
 				</td>
@@ -68,12 +68,12 @@
 		</table>
 	</div>
 	<div class="span6">
-		<h2>Expense categories</h2>
+		<h2><%= t('categories.headers.expense') %></h2>
 		<table class="table table-striped table-bordered">
 			<thead>
 			<tr>
 				<th colspan="2">Name</th>
-				<th>Actions</th>
+				<th><%= t('actions') %></th>
 			</tr>
 			</thead>
 			<tbody>
@@ -86,14 +86,14 @@
 				<td>
 					<div class="btn-group">
 						<a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
-							Actions
+							<%= t('actions') %>
 							<span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu">
-							<li><%= link_to "<i class=\"icon-edit\"></i> Edit".html_safe, edit_category_path(category) %></li>
-							<li><%= link_to "<i class=\"icon-trash\"></i> Delete".html_safe, category, :method => :delete, :confirm => "Are you sure?" %></li>
+							<li><%= link_to "<i class=\"icon-edit\"></i> #{t('action.edit')}".html_safe, edit_category_path(category) %></li>
+							<li><%= link_to "<i class=\"icon-trash\"></i> #{t('action.delete')}".html_safe, category, :method => :delete, :confirm => "Are you sure?" %></li>
 							<li class="divider"></li>
-							<li><%= link_to "<i class=\"icon-pencil\"></i> New child".html_safe, new_category_path(:parent => category.id) %></li>
+							<li><%= link_to "<i class=\"icon-pencil\"></i> #{t('categories.action.new_child')}".html_safe, new_category_path(:parent => category.id) %></li>
 						</ul>
 					</div>
 				</td>
@@ -108,12 +108,12 @@
 				<td>
 					<div class="btn-group">
 						<a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
-							Actions
+							<%= t('actions') %>
 							<span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu">
-							<li><%= link_to "<i class=\"icon-edit\"></i> Edit".html_safe, edit_category_path(child) %></li>
-							<li><%= link_to "<i class=\"icon-trash\"></i> Delete".html_safe, child, :method => :delete, :confirm => "Are you sure?" %></li>
+							<li><%= link_to "<i class=\"icon-edit\"></i> #{t('action.edit')}".html_safe, edit_category_path(child) %></li>
+							<li><%= link_to "<i class=\"icon-trash\"></i> #{t('action.delete')}".html_safe, child, :method => :delete, :confirm => "Are you sure?" %></li>
 						</ul>
 					</div>
 				</td>

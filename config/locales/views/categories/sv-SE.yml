@@ -1,0 +1,11 @@
+"sv-SE":
+  categories:
+    headers:
+      income: Inkomstkategorier
+      expense: Utgiftskategorier
+    action:
+      new_child: Ny underkategori
+    
+    sidebar:
+      headers:
+        categories: Kategorier

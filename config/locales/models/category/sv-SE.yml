@@ -1,0 +1,10 @@
+"sv-SE":
+  activerecord:
+    models:
+      category: Kategori
+    attributes:
+      category:
+        parent: Huvudkategori
+        name: Namn
+        description: Beskrivning
+        expense: Utgift

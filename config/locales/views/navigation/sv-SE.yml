@@ -6,3 +6,10 @@
       new: Nytt
       list: Lista
     categories: Kategorier
+
+  sidebar:
+    header:
+      shortcuts: Genvägar
+    shortcuts:
+      new_account: Nytt konto
+      cash_flow: Kassaflöde
