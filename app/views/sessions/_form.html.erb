@@ -1,7 +1,7 @@
 <%= form_tag(sessions_path, :class => "well") do %>
 	<legend><%= t('sessions.form.legend_html') %></legend>
-	<%= text_field_tag :username_or_email, '', :class => "input-xlarge input-fat",:placeholder => t('sessions.form.placeholder.username_or_email') %>
-	<%= password_field_tag :password, '', :class => "input-xlarge input-fat",:placeholder => t('sessions.form.placeholder.password') %>
+	<%= text_field_tag :username_or_email, '', :class => " input-fat",:placeholder => t('sessions.form.placeholder.username_or_email') %>
+	<%= password_field_tag :password, '', :class => " input-fat",:placeholder => t('sessions.form.placeholder.password') %>
 	<div>
 		<%= submit_tag t('sessions.form.submit'), :class => "btn btn-primary btn-large" %>
 	</div>
