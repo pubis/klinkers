@@ -19,6 +19,13 @@
 		</div>
 	</div>
 	<div class="control-group">
+		<%= f.label :favorite, :class => "control-label" %>
+		<div class="controls">
+			<%= f.check_box :favorite %>
+		</div>
+	</div>
+	<% if @account.new_record? %>
+	<div class="control-group">
 		<%= f.label :opening_balance, :class => "control-label" %>
 		<div class="controls">
 			<%= f.text_field :opening_balance, :value => "0.00" %>
@@ -30,6 +37,7 @@
 			<%= f.date_select :opening_date %>
 		</div>
 	</div>
+	<% end %>
 </fieldset>
 	<div class="form-actions">
 		<%= f.submit "Save account", :class => "btn btn-primary" %>
