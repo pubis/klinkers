@@ -3,20 +3,26 @@
 	<div class="control-group">
 		<%= f.label User.human_attribute_name("username"), :class => "control-label" %>
 		<div class="controls">
-			<%= f.text_field :username, :class => "input-xlarge", :placeholder => t("user.form.placeholder.username") %>
+			<%= f.text_field :username, :class => "input-xlarge", :placeholder => t("users.form.placeholders.username") %>
 		</div>
 	</div>
 	<div class="control-group">
 		<%= f.label User.human_attribute_name("email"), :class => "control-label" %>
 		<div class="controls">
-			<%= f.text_field :email, :class => "input-xlarge", :placeholder => t("user.form.placeholder.email") %>
+			<%= f.text_field :email, :class => "input-xlarge", :placeholder => t("users.form.placeholders.email") %>
 		</div>
 	</div>
 	<div class="control-group">
 		<%= f.label User.human_attribute_name("name"), :class => "control-label" %>
 		<div class="controls">
-			<%= f.text_field :first_name, :class => "input-small", :placeholder => t("user.form.placeholder.first_name") %>
-			<%= f.text_field :last_name,  :class => "input-medium", :placeholder => t("user.form.placeholder.last_name") %>
+			<%= f.text_field :first_name, :class => "input-small", :placeholder => t("users.form.placeholders.first_name") %>
+			<%= f.text_field :last_name,  :class => "input-medium", :placeholder => t("users.form.placeholders.last_name") %>
+		</div>
+	</div>
+	<div class="control-group">
+		<%= f.label t('users.form.language'), :class => "control-label" %>
+		<div class="controls">
+			<%= f.select :language, [['English', 'en'], ['Svenska', 'sv-SE']], {:selected => I18n.locale.to_s} %>
 		</div>
 	</div>
 	<div class="control-group">
@@ -28,12 +34,12 @@
 	<div class="control-group">
 		<%= f.label User.human_attribute_name("password"), :class => "control-label" %>
 		<div class="controls">
-			<%= f.text_field :password, :class => "input-medium", :placeholder => t("user.form.placeholder.password") %>
-			<%= f.text_field :password_confirmation, :class => "input-medium", :placeholder => t("user.form.placeholder.password_confirmation") %>
+			<%= f.password_field :password, :class => "input-medium", :placeholder => t("users.form.placeholders.password") %>
+			<%= f.password_field :password_confirmation, :class => "input-medium", :placeholder => t("users.form.placeholders.password_confirmation") %>
 		</div>
 	</div>
 </fieldset>
 	<div class="form-actions">
-		<%= f.submit t("user.form.submit"), :class => "btn btn-primary btn-large" %>
+		<%= f.submit t("users.form.submit"), :class => "btn btn-primary btn-large" %>
 	</div>
 <% end %>

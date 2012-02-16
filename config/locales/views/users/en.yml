@@ -1,7 +1,7 @@
 en:
-  user:
+  users:
     form:
-      placeholder:
+      placeholders:
         username: user
         email: user@example.com
         first_name: First
@@ -9,6 +9,7 @@ en:
         password: Secrect
         password_confirmation: Confirm
       submit: Create user!
+      language: Language
 
     overview:
       title: My economy

@@ -1,7 +1,7 @@
 "sv-SE":
-  user:
+  users:
     form:
-      placeholder:
+      placeholders:
         username: användare
         email: anvandare@exempel.se
         first_name: Förnamn
@@ -9,6 +9,7 @@
         password: Hemligt
         password_confirmation: Bekräfta
       submit: Skapa användare!
+      language: Språk
 
     overview:
       title: Min ekonomi

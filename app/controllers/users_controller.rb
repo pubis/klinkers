@@ -12,4 +12,14 @@ class UsersController < ApplicationController
       redirect_to login_path
     end
   end
+  
+  def create
+    @user = User.new(params[:user])
+    
+    if @user.save
+      redirect_to login_path, :notice => "New user created! Please login!"
+    else
+      render "new"
+    end
+  end
 end
