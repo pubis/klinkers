@@ -1,0 +1,29 @@
+<div class="page-header">
+	<h1 id="create_new_user">Create new user</h1>
+</div>
+<%= form_for @user, :html => { :class => "form-horizontal" } do |f| %>
+<fieldset>
+	<div class="control-group">
+		<%= f.label :username, :class => "control-label" %>
+		<div class="controls">
+			<%= f.text_field :username, :class => "input-xlarge" %>
+		</div>
+	</div>
+	<div class="control-group">
+		<%= f.label :name, :class => "control-label" %>
+		<div class="controls">
+			<%= f.text_field :first_name, :class => "input-small", :placeholder => "First" %>
+			<%= f.text_field :last_name,  :class => "input-large", :placeholder => "Last" %>
+		</div>
+	</div>
+	<div class="control-group">
+		<%= f.label :default_currency, :class => "control-label" %>
+		<div class="controls">
+			<%= f.collection_select :default_currency, Currency.all, :id, :example %>
+		</div>
+	</div>
+</fieldset>
+	<div class="form-actions">
+		<%= f.submit "Create user!", :class => "btn btn-primary" %>
+	</div>
+<% end %>

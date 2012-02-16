@@ -1,0 +1,39 @@
+<%= form_for @user, :html => { :class => "form-horizontal" } do |f| %>
+<fieldset>
+	<div class="control-group">
+		<%= f.label User.human_attribute_name("username"), :class => "control-label" %>
+		<div class="controls">
+			<%= f.text_field :username, :class => "input-xlarge", :placeholder => t("user.form.placeholder.username") %>
+		</div>
+	</div>
+	<div class="control-group">
+		<%= f.label User.human_attribute_name("email"), :class => "control-label" %>
+		<div class="controls">
+			<%= f.text_field :email, :class => "input-xlarge", :placeholder => t("user.form.placeholder.email") %>
+		</div>
+	</div>
+	<div class="control-group">
+		<%= f.label User.human_attribute_name("name"), :class => "control-label" %>
+		<div class="controls">
+			<%= f.text_field :first_name, :class => "input-small", :placeholder => t("user.form.placeholder.first_name") %>
+			<%= f.text_field :last_name,  :class => "input-medium", :placeholder => t("user.form.placeholder.last_name") %>
+		</div>
+	</div>
+	<div class="control-group">
+		<%= f.label Currency.model_name.human, :class => "control-label" %>
+		<div class="controls">
+			<%= f.collection_select :currency_id, Currency.all, :id, :name %>
+		</div>
+	</div>
+	<div class="control-group">
+		<%= f.label User.human_attribute_name("password"), :class => "control-label" %>
+		<div class="controls">
+			<%= f.text_field :password, :class => "input-medium", :placeholder => t("user.form.placeholder.password") %>
+			<%= f.text_field :password_confirmation, :class => "input-medium", :placeholder => t("user.form.placeholder.password_confirmation") %>
+		</div>
+	</div>
+</fieldset>
+	<div class="form-actions">
+		<%= f.submit t("user.form.submit"), :class => "btn btn-primary btn-large" %>
+	</div>
+<% end %>

@@ -1,0 +1,66 @@
+<%= content_for :sidebar do %>
+<%= render :partial => "sidebar/shortcuts"%>
+<% end %>
+<div class="page-header">
+	<h1 id="your_economy"><%= t('user.overview.title') %> 
+		<small><%= t('net_worth') %>: <%= number_to_currency(current_user.net_worth, :locale => current_user.currency.locale) %></small></h1>
+</div>
+<div class="row-fluid">
+	<div class="span6">
+
+		<h2><%= t('accounts.favorites')%></h2>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th><%= Account.model_name.human %></th>
+					<th class="right-align"><%= t('balance') %></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% favorites = 0.0 %>
+				<% current_user.accounts.favorites.each do |account| %>
+				<% favorites += account.balance %>
+				<tr>
+					<td><%= account.name %></td>
+					<td class="right-align"><%= number_to_currency(account.balance, :locale => account.currency.locale) %></td>
+				</tr>
+				<% end %>
+			</tbody>
+			<tfoot>
+				<tr>
+					<th><%= t('sum')%></th>
+					<th class="right-align"><%= number_to_currency(favorites, :locale => current_user.currency.locale) %></th>
+				</tr>
+			</tfoot>
+		</table>
+
+		<h2><%= t('accounts.others')%></h2>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th><%= Account.model_name.human %></th>
+					<th class="right-align"><%= t('balance') %></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% others = 0.0 %>
+				<% current_user.accounts.users.no_favorites.each do |account| %>
+				<% b = account.balance %>
+				<% others += b %>
+				<tr>
+					<td><%= account.name %></td>
+					<td class="right-align"><%= number_to_currency(b, :locale => account.currency.locale) %></td>
+				</tr>
+				<% end %>
+			</tbody>
+			<tfoot>
+				<tr>
+					<th>Total</th>
+					<th class="right-align"><%= number_to_currency(others, :locale => current_user.currency.locale) %></th>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+	<div class="span6">
+	</div>
+</div>

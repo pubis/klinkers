@@ -1,0 +1,8 @@
+"sv-SE":
+  navbar:
+    my_economy: Min ekonomi
+    accounts: Konton
+    accounts_menu:
+      new: Nytt
+      list: Lista
+    categories: Kategorier

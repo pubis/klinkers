@@ -1,0 +1,8 @@
+"sv-SE":
+  navbar:
+    my_economy: My economy
+    accounts: Accounts
+    accounts_menu:
+      new: New
+      list: List
+    categories: Categories

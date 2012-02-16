@@ -1,0 +1,52 @@
+<div id="new_transaction" class="modal hide fade">
+	<%= form_for [@account, @transaction], :remote => true, :html => {:'data-type' => 'json', :class => "form-horizontal"} do |f| %>
+	<div class="modal-header">
+		<a class="close" data-dismiss="modal">&times;</a>
+		<h3>New transaction</h3>
+	</div>
+	<div class="modal-body">
+		<div class="control-group">
+			<%= f.label :event, :class => "control-label" %>
+			<div class="controls">
+				<%= f.select :event, ["Withdrawal", "Deposit", "Transfer"] %>
+			</div>
+		</div>
+		<div class="control-group">
+			<%= f.label :operation_date, :class => "control-label" %>
+			<div class="controls">
+				<%= f.date_select :operation_date %>
+			</div>
+		</div>
+		<%= f.fields_for :transaction_items do |builder| %>
+		<div class="control-group">
+	    	<%= builder.label :category, :class => "control-label" %>
+			<div class="controls">
+				<%= builder.collection_select :category_id, Category.where(expense: true).all, :id, :display_name %>
+			</div>
+		</div>
+		<div class="control-group">
+			<%= builder.label :payee, :class => "control-label" %>
+			<div class="controls">
+				<%= builder.text_field :payee, :data => {:provide => "typeahead", :items => 4, :source => current_user.accounts.users.pluck(:name)} %>
+			</div>
+		</div>
+		<div class="control-group">
+			<%= builder.label :memo, :class => "control-label" %>
+			<div class="controls">
+				<%= builder.text_field :memo %>
+			</div>
+		</div>
+		<div class="control-group">
+			<%= builder.label :amount, :class => "control-label" %>
+			<div class="controls">
+				<%= builder.text_field :amount %>
+			</div>
+		</div>
+		<% end %>
+	</div>
+	<div class="modal-footer">
+		<%= f.submit "Save transaction", :class => "btn btn-primary" %>
+		<a href="#" class="btn" data-dismiss="modal">Close</a>
+	</div>
+	<% end %>
+</div>

@@ -1,0 +1,55 @@
+<%= form_for [@account, @transaction], :html => {:class => "form-horizontal"} do |f| %>
+<% if @transaction.errors.any? %>
+<div class="alert alert-error">
+	<a class="close" data-dismiss="alert" href="#">&times;</a>
+	<ul>
+	<%= @transaction.errors.each do |e| %>
+		<li><%= e %></li>
+	<% end %>
+	</ul>
+</div>
+<% end %>
+<fieldset>
+	<div class="control-group">
+		<%= f.label :event, :class => "control-label" %>
+		<div class="controls">
+			<%= f.select :event, ["Withdrawal", "Deposit", "Transfer"] %>
+		</div>
+	</div>
+	<div class="control-group">
+		<%= f.label :operation_date, :class => "control-label" %>
+		<div class="controls">
+			<%= f.date_select :operation_date %>
+		</div>
+	</div>
+	<%= f.fields_for :transaction_items do |builder| %>
+	<div class="control-group">
+    	<%= builder.label :category, :class => "control-label" %>
+		<div class="controls">
+			<%= builder.collection_select :category_id, Category.where(expense: true).all, :id, :display_name %>
+		</div>
+	</div>
+	<div class="control-group">
+		<%= builder.label :payee, :class => "control-label" %>
+		<div class="controls">
+			<%= builder.text_field :payee %>
+		</div>
+	</div>
+	<div class="control-group">
+		<%= builder.label :memo, :class => "control-label" %>
+		<div class="controls">
+			<%= builder.text_field :memo %>
+		</div>
+	</div>
+	<div class="control-group">
+		<%= builder.label :amount, :class => "control-label" %>
+		<div class="controls">
+			<%= builder.text_field :amount %>
+		</div>
+	</div>
+	<% end %>
+</fieldset>
+<div class="form-actions">
+	<%= f.submit "Save transaction", :class => "btn btn-primary" %>
+</div>
+<% end %>

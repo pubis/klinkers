@@ -1,0 +1,14 @@
+en:
+  user:
+    form:
+      placeholder:
+        username: user
+        email: user@example.com
+        first_name: First
+        last_name: Last
+        password: Secrect
+        password_confirmation: Confirm
+      submit: Create user!
+
+    overview:
+      title: My economy

@@ -1,0 +1,12 @@
+<%= content_for :sidebar do %>
+	<li class="nav-header"><%= t('categories.sidebar.headers.categories') %></li>
+	<li>
+		<% icn = '<i class="icon-pencil"></i>' %>
+		<% ttl = t('categories.sidebar.categories.new') %>
+		<%= link_to "#{icn} #{ttl}".html_safe, new_category_path %>
+	</li>
+	<%= render "sidebar/shortcuts" %>
+<% end %>
+<div class="page-header">
+	<h1><%= @category.display_name.titleize %></h1>
+</div>

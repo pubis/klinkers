@@ -1,0 +1,8 @@
+"sv-SE":
+  sessions:
+    form:
+      legend_html: 'Log in or <a href="/login">sign up</a>'
+      placeholder:
+        username_or_email: Username or email
+        password: Password
+      submit: Log in

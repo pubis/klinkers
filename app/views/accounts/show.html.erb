@@ -1,0 +1,81 @@
+<%= content_for :sidebar do %>
+<%= render :partial => "sidebar/accounts" %>
+<% end %>
+<div class="page-header">
+	<h1 id="account_name"><%= @account.name %></h1>
+</div>
+<div class="actions">
+	<%= render :partial => "transaction" %>
+	<button class="btn btn-small" data-toggle="modal" data-target="#new_transaction">
+	  New transaction
+	</button>
+</div>
+<h2>Transactions</h2>
+<table class="table table-condensed">
+	<thead>
+	<tr>
+		<th>&nbsp;</th>
+		<th>Date</th>
+		<th>Type</th>
+		<th colspan="2">Payee</th>
+		<th class="right-align">Withdrawal</th>
+		<th class="right-align">Deposit</th>
+		<th class="right-align">Balance</th>
+	</tr>
+	<tr>
+		<th>&nbsp;</th>
+		<th>&nbsp;</th>
+		<th>#</th>
+		<th>Category</th>
+		<th>Memo</th>
+		<th colspan="3">&nbsp;</th>
+	</tr>
+	</thead>
+	<tbody>
+	<% running_balance = @account.balance %>
+	<% stripe = true %>
+	<% @transactions.each do |t| %>
+		<% amount = transaction_amount(t, @account) %>
+		<tr class="<%= "manual-stripe" if stripe %>">
+			<!-- Icon -->
+			<td rowspan="2" width="32px" height="32px">&nbsp;</td>
+			<!-- Date -->
+			<td><%= link_to t.operation_date, edit_account_transaction_path(t) %></td>
+			<!-- Type -->
+			<td><%= t.event %></td>
+			<!-- Payee/Account -->
+			<td colspan="2"><%= transaction_payee(t, @account) %></td>
+			<!-- Withdrawal -->
+			<td class="right-align"><%= amount < 0 ? "%.2f" % amount.abs : "&nbsp;".html_safe %></td>
+			<!-- Deposit -->
+			<td class="right-align"><%= amount > 0 ? "%.2f" % amount : "&nbsp;".html_safe %></td>
+			<!-- Balance -->
+			<td class="right-align">
+				<% if !params[:page] || params[:page] == "1" %>
+					<%= "%.2f" % running_balance %>
+					<% running_balance -= amount %>
+				<% else %>
+					&nbsp;
+				<% end %>
+			</td>
+
+		</tr>
+		<tr class="<%= "manual-stripe" if stripe %>">
+			<!-- Cleared -->
+			<td>&nbsp;</td>
+			<!-- Empty -->
+			<td>&nbsp;</td>
+			<!-- Category -->
+			<td><%= transaction_category(t) %></td>
+			<!-- Memo -->
+			<td><%= transaction_memo(t, @account) %></td>
+			<!-- Empty -->
+			<td colspan="3">&nbsp;</td>
+		</tr>
+		<% stripe = !stripe %>
+	<% end %>
+	</tbody>
+</table>
+<%= page_navigation_links @transactions %>
+<%= debug(@transaction) %>
+<%= debug(@transaction.transaction_items) %>

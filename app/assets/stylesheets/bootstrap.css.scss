@@ -1,0 +1,28 @@
+@import "twitter/bootstrap";
+@import "twitter/bootstrap/responsive";
+
+.nav-list .active > a:hover {
+  color: white;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+  background-color: #0088cc;
+}
+
+.nav-item-right {
+	float: right;
+}
+
+.nav-list .active > a {
+	.nav-item-right {
+		color: white;
+	}
+}
+
+.nav-item-amount {
+	color: #333;
+}
+
+input.input-fat {
+	font-size: 15px;
+	height: 32px;
+	padding-left: 14px;
+}

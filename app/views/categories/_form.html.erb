@@ -1,0 +1,41 @@
+<%= form_for @category, :html => {:class => "form-horizontal"} do |f| %>
+<% if @category.errors.any? %>
+<div class="alert alert-error">
+	<a class="close" data-dismiss="alert" href="#">&times;</a>
+	<ul>
+	<%= @category.errors.each do |e| %>
+		<li><%= e %></li>
+	<% end %>
+	</ul>
+</div>
+<% end %>
+<fieldset>
+	<div class="control-group">
+		<%= f.label :parent, :class => "control-label" %>
+		<div class="controls">
+			<%= f.collection_select :parent_id, current_user.categories.roots, :id, :name, :include_blank => true %>
+		</div>
+	</div>
+	<div class="control-group">
+		<%= f.label :name, :class => "control-label" %>
+		<div class="controls">
+			<%= f.text_field :name %>
+		</div>
+	</div>
+	<div class="control-group">
+		<%= f.label :description, :class => "control-label" %>
+		<div class="controls">
+			<%= f.text_field :description, :class => "input-xlarge" %>
+		</div>
+	</div>
+	<div class="control-group">
+		<%= f.label :expense, :class => "control-label" %>
+		<div class="controls">
+			<%= f.check_box :expense, :class => "input-xlarge" %>
+		</div>
+	</div>
+</fieldset>
+<div class="form-actions">
+	<%= f.submit "Save category", :class => "btn btn-primary" %>
+</div>
+<% end %>

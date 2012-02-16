@@ -1,0 +1,8 @@
+"sv-SE":
+  sessions:
+    form:
+      legend_html: 'Logga in eller <a href="/login">registrera dig</a>'
+      placeholder:
+        username_or_email: Användarnamn eller epost
+        password: Lösenord
+      submit: Logga in

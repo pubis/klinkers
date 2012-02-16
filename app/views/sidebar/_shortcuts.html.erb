@@ -1,0 +1,10 @@
+<li class="nav-header"></i><%= t('sidebar.header.shortcuts') %></li>
+
+<% icn = '<i class="icon-pencil"></i>' %>
+<% ttl = t('sidebar.shortcuts.new_account') %>
+<li><%= link_to "#{icn} #{ttl}".html_safe, new_account_path %></li>
+
+<% icn = '<i class="icon-signal"></i>' %>
+<% ttl = t('sidebar.shortcuts.cash_flow') %>
+<li><%= link_to "#{icn} #{ttl}".html_safe, '#' %></li>
+	

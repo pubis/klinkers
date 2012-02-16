@@ -1,0 +1,14 @@
+"sv-SE":
+  user:
+    form:
+      placeholder:
+        username: användare
+        email: anvandare@exempel.se
+        first_name: Förnamn
+        last_name: Efternamn
+        password: Hemligt
+        password_confirmation: Bekräfta
+      submit: Skapa användare!
+
+    overview:
+      title: Min ekonomi
