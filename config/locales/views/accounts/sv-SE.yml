@@ -3,4 +3,5 @@
     sidebar:
       headers:
         account: Konto
-      account: Redigera
+      account:
+        edit: Redigera
