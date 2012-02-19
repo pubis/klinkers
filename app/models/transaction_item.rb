@@ -5,5 +5,5 @@ class TransactionItem < ActiveRecord::Base
   belongs_to :transaction
   belongs_to :category
   
-  attr_accessor :payee
+  attr_accessor :payee, :to_account
 end

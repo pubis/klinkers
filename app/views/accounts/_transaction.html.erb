@@ -24,10 +24,16 @@
 				<%= builder.collection_select :category_id, Category.where(expense: true).all, :id, :display_name %>
 			</div>
 		</div>
-		<div class="control-group">
+		<div class="control-group" id="payee">
 			<%= builder.label :payee, :class => "control-label" %>
 			<div class="controls">
-				<%= builder.text_field :payee, :data => {:provide => "typeahead", :items => 4, :source => current_user.accounts.users.pluck(:name)} %>
+				<%= builder.text_field :payee, :data => {:provide => "typeahead", :items => 4, :source => current_user.accounts.payees.pluck(:name)} %>
+			</div>
+		</div>
+		<div class="control-group hide" id="account">
+			<%= builder.label :account, :class => "control-label" %>
+			<div class="controls">
+				<%= builder.text_field :to_account, :data => {:provide => "typeahead", :items => 4, :source => current_user.accounts.users.pluck(:name)} %>
 			</div>
 		</div>
 		<div class="control-group">
@@ -39,7 +45,10 @@
 		<div class="control-group">
 			<%= builder.label :amount, :class => "control-label" %>
 			<div class="controls">
-				<%= builder.text_field :amount %>
+				<div class="input-append">
+					<%= builder.text_field :amount %>
+					<span class="add-on"><%= t('number.currency.format.unit') %>
+				</div>
 			</div>
 		</div>
 		<% end %>
