@@ -1,0 +1,9 @@
+"sv-SE":
+  transactions:
+    action:
+      new: Ny transaktion
+
+    form:
+      headers:
+        new: Ny transaktion
+      submit: Spara transaktion

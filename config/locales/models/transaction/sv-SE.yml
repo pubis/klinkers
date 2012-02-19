@@ -1,0 +1,14 @@
+"sv-SE":
+  activerecord:
+    models:
+      transaction: Transaktion
+    attributes:
+      transaction:
+        event: Händelse
+        operation_date: Datum
+      transaction_item:
+        category: Kategori
+        payee: Mottagare
+        account: Konto
+        amount: Belopp
+        memo: Memo

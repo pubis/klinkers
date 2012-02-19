@@ -9,3 +9,6 @@
     sidebar:
       headers:
         categories: Kategorier
+
+    form:
+      submit: Spara kategori

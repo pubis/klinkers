@@ -3,6 +3,8 @@ en:
   action:
     edit: Edit
     delete: Delete
+  
+  close: Close
 
   accounts:
     favorites: Favorite accounts

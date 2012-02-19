@@ -29,5 +29,6 @@ $(document).ready(function() {
 		.bind('ajax:complete', function(evt, xhr, status) {
 			var $submitButton = $(this).find('input[name="commit"]');
 			$submitButton.button('toggle');
+			this.reset();
 		});
 });

@@ -1,0 +1,14 @@
+en:
+  categories:
+    headers:
+      income: Income categories
+      expense: Expense categories
+    action:
+      new_child: New child category
+    
+    sidebar:
+      headers:
+        categories: Categories
+
+    form:
+      submit: Save category

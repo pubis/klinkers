@@ -1,0 +1,9 @@
+en:
+  transactions:
+    action:
+      new: New transaction
+
+    form:
+      headers:
+        new: New transaction
+      submit: Save transaction
