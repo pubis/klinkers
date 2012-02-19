@@ -29,10 +29,16 @@
 			<%= builder.collection_select :category_id, Category.where(expense: true).all, :id, :display_name %>
 		</div>
 	</div>
-	<div class="control-group">
+	<div class="control-group" id="payee">
 		<%= builder.label :payee, :class => "control-label" %>
 		<div class="controls">
-			<%= builder.text_field :payee %>
+			<%= builder.text_field :payee, :data => {:provide => "typeahead", :items => 4, :source => current_user.accounts.payees.pluck(:name)} %>
+		</div>
+	</div>
+	<div class="control-group" id="account">
+		<%= builder.label :to_account, :class => "control-label" %>
+		<div class="controls">
+			<%= builder.text_field :to_account, :data => {:provide => "typeahead", :items => 4, :source => current_user.accounts.users.pluck(:name)} %>
 		</div>
 	</div>
 	<div class="control-group">
@@ -44,12 +50,15 @@
 	<div class="control-group">
 		<%= builder.label :amount, :class => "control-label" %>
 		<div class="controls">
-			<%= builder.text_field :amount %>
+			<div class="input-append">
+				<%= builder.text_field :amount %>
+				<span class="add-on"><%= t('number.currency.format.unit') %>
+			</div>
 		</div>
 	</div>
 	<% end %>
 </fieldset>
 <div class="form-actions">
-	<%= f.submit "Save transaction", :class => "btn btn-primary" %>
+	<%= f.submit t('transactions.form.submit'), :class => "btn btn-primary" %>
 </div>
 <% end %>
