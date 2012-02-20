@@ -63,5 +63,31 @@
 		</table>
 	</div>
 	<div class="span6">
+		<h2><%= t('users.overview.top_expense_categories') %></h2>
+		<div id="piechart"></div>
+		<table class="table table-condensed table-striped" id="data">
+			<thead>
+			<tr>
+				<th>Category</th>
+				<th class="right-align">Amount</th>
+			</tr>
+			</thead>
+			<tbody>
+			<% sum = 0.0 %>
+			<% @categories.each do |category| %>
+				<% sum += category.amount.abs %>
+				<tr>
+					<td class="cat_name" data-category="<%= category.id %>"><%= category.display_name %></td>
+					<td class="right-align cat_amount"><%= "%.2f" % category.amount.abs if category.amount %></td>
+				</tr>
+			<% end %>
+			</tbody>
+			<tfoot>
+			<tr>
+				<th>Total</th>
+				<th class="right-align"><%= "%.2f" % sum %></th>
+			</tr>
+			</tfoot>
+		</table>
 	</div>
 </div>

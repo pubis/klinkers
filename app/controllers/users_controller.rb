@@ -11,6 +11,30 @@ class UsersController < ApplicationController
     unless current_user
       redirect_to login_path
     end
+    
+    @accounts = Account.users.no_payees
+    
+    account_ids = params[:accounts] || @accounts.map { |a| a.id }
+
+    ids = account_ids.join(',')
+    
+    @start_date = params[:start_date] || "2012-01-01"
+    @end_date = params[:end_date] || Date.today
+    
+    @categories = Category.all(
+      :select => "categories.*, SUM(transaction_items.amount) AS amount",
+      :joins => [
+        "LEFT JOIN transaction_items ON categories.id = transaction_items.category_id AND transaction_items.account_id IN (#{ids})",
+        "LEFT JOIN transactions ON transaction_items.transaction_id = transactions.id"
+      ],
+      :conditions => [
+        "categories.expense = ? AND amount IS NOT NULL AND transactions.operation_date > ? AND transactions.operation_date <= ?",
+        true,
+        @start_date,
+        @end_date
+      ],
+      :group => "categories.id"
+    )    
   end
   
   def create
