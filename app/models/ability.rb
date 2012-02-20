@@ -9,6 +9,7 @@ class Ability
     else
       can :manage, User, :id => user.id
       can :manage, Account, :user_id => user.id
+      can :manage, Budget, :user_id => user.id
       can :manage, Category, :user_id => user.id
     end
   end

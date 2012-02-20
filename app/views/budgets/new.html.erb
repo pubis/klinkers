@@ -1,0 +1,8 @@
+<%= content_for :sidebar do %>
+<li class="nav-header">Budgets</li>
+<li class="active"><a href="<%= new_budget_path %>"><i class="icon-pencil icon-white"></i> New</a></li>
+<% end %>
+<div class="page-header">
+	<h1 id="budgets">Budgets</h1>
+</div>
+<%= render "form" %>

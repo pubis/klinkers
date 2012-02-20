@@ -1,0 +1,17 @@
+<%= content_for :sidebar do %>
+<li class="nav-header">Budgets</li>
+<li><a href="<%= new_budget_path %>"><i class="icon-pencil"></i> New</a></li>
+<% end %>
+<div class="page-header">
+	<h1 id="budgets">Budgets</h1>
+</div>
+<% @budgets.each do |budget| %>
+<div class="row-fluid">
+	<div class="span4">
+		<%= link_to budget.name, budget %>
+	</div>
+	<div class="span4">
+		<%= budget.interval %>
+	</div>
+</div>	
+<% end %>

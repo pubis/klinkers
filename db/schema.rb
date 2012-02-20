@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120215202212) do
+ActiveRecord::Schema.define(:version => 20120220182720) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -33,6 +33,37 @@ ActiveRecord::Schema.define(:version => 20120215202212) do
   add_index "accounts", ["payee"], :name => "index_accounts_on_payee"
   add_index "accounts", ["system"], :name => "index_accounts_on_system"
   add_index "accounts", ["user_id"], :name => "index_accounts_on_user_id"
+
+  create_table "budget_accounts", :force => true do |t|
+    t.integer  "budget_id",  :null => false
+    t.integer  "account_id", :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "budget_accounts", ["account_id"], :name => "index_budget_accounts_on_account_id"
+  add_index "budget_accounts", ["budget_id"], :name => "index_budget_accounts_on_budget_id"
+
+  create_table "budget_categories", :force => true do |t|
+    t.integer  "budget_id",                                 :null => false
+    t.integer  "category_id",                               :null => false
+    t.decimal  "amount",      :precision => 9, :scale => 2, :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+  end
+
+  add_index "budget_categories", ["budget_id"], :name => "index_budget_categories_on_budget_id"
+  add_index "budget_categories", ["category_id"], :name => "index_budget_categories_on_category_id"
+
+  create_table "budgets", :force => true do |t|
+    t.string   "name",       :null => false
+    t.integer  "user_id",    :null => false
+    t.string   "interval",   :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "budgets", ["user_id"], :name => "index_budgets_on_user_id"
 
   create_table "categories", :force => true do |t|
     t.string   "name",                           :null => false

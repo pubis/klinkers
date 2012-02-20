@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   belongs_to :currency
   
   has_many :accounts, :dependent => :destroy
+  has_many :budgets
   has_many :categories
   
   after_create :build_system_accounts
