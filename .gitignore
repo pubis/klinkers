@@ -22,3 +22,5 @@
 
 # Ignore custom rvmrc
 .rvmrc_custom
+
+.DS_Store
