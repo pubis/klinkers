@@ -21,7 +21,7 @@
 		<div class="control-group">
 	    	<%= builder.label TransactionItem.human_attribute_name('category'), :class => "control-label" %>
 			<div class="controls">
-				<%= builder.collection_select :category_id, Category.where(expense: true).all, :id, :display_name %>
+				<%= builder.collection_select :category_id, Category.where(expense: true).all, :id, :display_name, :include_blank => true %>
 			</div>
 		</div>
 		<div class="control-group" id="payee">
