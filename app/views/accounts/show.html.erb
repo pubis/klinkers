@@ -46,19 +46,19 @@
 			<!-- Icon -->
 			<td rowspan="2" width="32px" height="32px">&nbsp;</td>
 			<!-- Date -->
-			<td><%= link_to t.operation_date, edit_account_transaction_path(t) %></td>
+			<td><%= link_to t.operation_date, edit_account_transaction_path(@account, t) %></td>
 			<!-- Type -->
 			<td><%= t.event %></td>
 			<!-- Payee/Account -->
-			<td colspan="2"><%= transaction_payee(t, @account) %></td>
+			<td colspan="2"><strong><%= transaction_payee(t, @account) %></strong></td>
 			<!-- Withdrawal -->
-			<td class="right-align"><%= amount < 0 ? "%.2f" % amount.abs : "&nbsp;".html_safe %></td>
+			<td class="right-align"><%= amount < 0 ? number_to_currency(amount.abs, :locale => @account.currency.locale) : "&nbsp;".html_safe %></td>
 			<!-- Deposit -->
-			<td class="right-align"><%= amount > 0 ? "%.2f" % amount : "&nbsp;".html_safe %></td>
+			<td class="right-align"><%= amount > 0 ? number_to_currency(amount, :locale => @account.currency.locale) : "&nbsp;".html_safe %></td>
 			<!-- Balance -->
 			<td class="right-align">
 				<% if !params[:page] || params[:page] == "1" %>
-					<%= "%.2f" % running_balance %>
+					<%= number_to_currency(running_balance, :locale => @account.currency.locale) %>
 					<% running_balance -= amount %>
 				<% else %>
 					&nbsp;
