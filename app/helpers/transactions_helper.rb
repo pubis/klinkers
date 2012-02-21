@@ -28,7 +28,7 @@ module TransactionsHelper
   def transaction_amount(transaction, account)
     is = transaction.account_items(account)
     amount = 0
-    amount = is.map { |i| amount += i.amount}
-    amount.first
+    is.map { |i| amount += i.amount}
+    amount
   end
 end
