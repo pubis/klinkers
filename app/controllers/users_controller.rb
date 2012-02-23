@@ -12,14 +12,14 @@ class UsersController < ApplicationController
       redirect_to login_path
     end
     
-    @accounts = Account.users.no_payees
+    @accounts = current_user.accounts.users.no_payees
     
     account_ids = params[:accounts] || @accounts.map { |a| a.id }
 
     ids = account_ids.join(',')
     
-    @start_date = params[:start_date] || "2012-01-01"
-    @end_date = params[:end_date] || Date.today
+    @start_date = Date.today.beginning_of_month
+    @end_date = Date.today
     
     @categories = Category.all(
       :select => "categories.*, SUM(transaction_items.amount) AS amount",
