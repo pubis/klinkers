@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120220182720) do
+ActiveRecord::Schema.define(:version => 20120223180635) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -54,6 +54,20 @@ ActiveRecord::Schema.define(:version => 20120220182720) do
 
   add_index "budget_categories", ["budget_id"], :name => "index_budget_categories_on_budget_id"
   add_index "budget_categories", ["category_id"], :name => "index_budget_categories_on_category_id"
+
+  create_table "budget_periods", :force => true do |t|
+    t.integer  "budget_id"
+    t.integer  "position"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "budget_periods", ["budget_id"], :name => "index_budget_periods_on_budget_id"
+  add_index "budget_periods", ["end_date"], :name => "index_budget_periods_on_end_date"
+  add_index "budget_periods", ["position"], :name => "index_budget_periods_on_position"
+  add_index "budget_periods", ["start_date"], :name => "index_budget_periods_on_start_date"
 
   create_table "budgets", :force => true do |t|
     t.string   "name",       :null => false
