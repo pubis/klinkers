@@ -7,6 +7,9 @@ class Budget < ActiveRecord::Base
   has_many :budget_categories, :dependent => :destroy, :include => :category
   
   has_many :budget_periods, :dependent => :destroy
+
+  attr_accessor :starting_at
+  columns_hash["starting_at"] = ActiveRecord::ConnectionAdapters::Column.new("starting_at", nil, "date")
   
   validates :name, :presence => true
   validates :interval, :presence => true
