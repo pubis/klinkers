@@ -9,6 +9,14 @@ class BudgetsController < ApplicationController
     
   end
   
+  def show
+    if params[:period]
+      @period = @budget.budget_periods.find(params[:period])
+    else
+      @period = @budget.active_period
+    end
+  end
+  
   def create
     if @budget.save
       redirect_to @budget, :notice => "Budget created!"
