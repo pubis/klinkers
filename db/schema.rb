@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(:version => 20120223180635) do
   create_table "budgets", :force => true do |t|
     t.string   "name",       :null => false
     t.integer  "user_id",    :null => false
-    t.string   "interval",   :null => false
+    t.integer  "interval",   :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
