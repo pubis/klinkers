@@ -31,4 +31,14 @@ module ApplicationHelper
   def page_navigation_links(pages)
     will_paginate(pages, :class => 'pagination', :inner_window => 2, :outer_window => 0, :renderer => BootstrapLinkRenderer, :previous_label => '&larr; Previous'.html_safe, :next_label => 'Next &rarr;'.html_safe)
   end
+  
+  def progress_bar(value, total)
+    progress = value / total * 100
+    color_class = "progress-success"
+    color_class = "progress-danger" if progress >= 80
+    
+    content_tag :div, :class => "progress progress-striped #{color_class}" do
+      content_tag(:div, '', :class => "bar", :style => "width: #{progress}%;")
+    end
+  end
 end
