@@ -20,13 +20,11 @@ class Budget < ActiveRecord::Base
   private
   def create_periods
     period_start = self.starting_at
-    i = 1
     while period_start < Date.today
       next_start = period_start + self.interval.to_i.months
       period_end = next_start - 1.day
-      period = self.budget_periods.create(start_date: period_start, end_date: period_end, position: i)
+      period = self.budget_periods.create(start_date: period_start, end_date: period_end)
       period_start = next_start
-      i += 1
     end
   end
 end
