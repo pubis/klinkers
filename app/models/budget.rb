@@ -6,7 +6,7 @@ class Budget < ActiveRecord::Base
 
   has_many :budget_categories, :dependent => :destroy, :include => :category
   
-  has_many :budget_periods, :dependent => :destroy
+  has_many :budget_periods, :dependent => :destroy, :order => "start_date DESC"
 
   attr_accessor :starting_at
   columns_hash["starting_at"] = ActiveRecord::ConnectionAdapters::Column.new("starting_at", nil, "date")
@@ -16,6 +16,18 @@ class Budget < ActiveRecord::Base
   validates :name, :presence => true
   validates :interval, :presence => true
   validates :account_ids, :presence => true
+  
+  def active_period
+    period = budget_periods.first
+    if period.end_date < Date.today
+      # Period has expired, so create next
+      period = budget_periods.create(
+        start_date: period.start_date + interval.to_i.months, 
+        end_date: period.end_date + interval.to_i.months
+      )
+    end
+    period
+  end
   
   private
   def create_periods
