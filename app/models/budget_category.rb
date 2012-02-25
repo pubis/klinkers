@@ -4,12 +4,18 @@ class BudgetCategory < ActiveRecord::Base
   
   validates :amount, :presence => true, :numericality => true
   
-  def budgeted
+  def budgeted_for_period(period)
     self.amount
   end
   
-  def actual
+  def actual_for_period(period)
     account_ids = budget.account_ids
-    TransactionItem.where('account_id IN (?) AND category_id = ?', account_ids, category.id).sum(:amount).abs
+    TransactionItem.joins(:transaction).where(
+      'account_id IN (?) AND category_id = ? AND operation_date >= ? AND operation_date <= ?', 
+      account_ids, 
+      category.id,
+      period.start_date,
+      period.end_date
+    ).sum(:amount).abs
   end
 end
