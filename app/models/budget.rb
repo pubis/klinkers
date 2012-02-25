@@ -17,6 +17,38 @@ class Budget < ActiveRecord::Base
   validates :interval, :presence => true
   validates :account_ids, :presence => true
   
+  def income_categories
+    self.budget_categories.joins(:category).where(:categories => {:expense => false})
+  end
+
+  def expense_categories
+    self.budget_categories.joins(:category).where(:categories => {:expense => true})
+  end
+  
+  def budgeted_income_for_period(period)
+    amount = 0.0
+    income_categories.each { |c| amount += c.budgeted_for_period(period) }
+    amount
+  end
+
+  def actual_income_for_period(period)
+    amount = 0.0
+    income_categories.each { |c| amount += c.actual_for_period(period) }
+    amount
+  end
+
+  def budgeted_expense_for_period(period)
+    amount = 0.0
+    expense_categories.each { |c| amount += c.budgeted_for_period(period) }
+    amount
+  end
+
+  def actual_expense_for_period(period)
+    amount = 0.0
+    expense_categories.each { |c| amount += c.actual_for_period(period) }
+    amount
+  end
+
   def active_period
     period = budget_periods.first
     if period.end_date < Date.today
