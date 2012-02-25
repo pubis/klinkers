@@ -8,8 +8,26 @@
 	<%= render "sidebar/shortcuts" %>
 <% end %>
 <div class="page-header">
-	<h1><%= @budget.name %></h1>
+	<h1>
+		<%= @budget.name %>
+		<small><%= @period.start_date %> - <%= @period.end_date %></small>
+	</h1>
 </div>
+<div class="well">
+	<div class="row-fluid">
+		<div class="span6">
+			<p>Budgeted income: <%= budgeted_income = @budget.budgeted_income_for_period(@period) %></p>
+			<p>Actual income: <%= actual_income = @budget.actual_income_for_period(@period) %></p>
+			<%= progress_bar(actual_income, budgeted_income) %>
+		</div>
+		<div class="span6">
+			<p>Budgeted expense: <%= budgeted_expense = @budget.budgeted_expense_for_period(@period) %></p>
+			<p>Actual expense: <%= actual_expense = @budget.actual_expense_for_period(@period) %></p>
+			<%= progress_bar(actual_expense, budgeted_expense) %>
+		</div>
+	</div>
+</div>
+<h2>Income</h2>
 <table class="table table-border table-stripe">
 	<thead>
 	<tr>
@@ -20,13 +38,34 @@
 	</tr>
 	</thead>
 	<tbody>
-	<% @budget.budget_categories.each do |bc| %>
+	<% @budget.income_categories.each do |bc| %>
 	<tr>
 		<td><%= bc.category.name %></td>
-		<td><%= bc.budgeted %></td>
-		<td><%= bc.actual %></td>
-		<td><%= bc.budgeted - bc.actual %></td>
+		<td><%= budgeted = bc.budgeted_for_period(@period) %></td>
+		<td><%= actual = bc.actual_for_period(@period) %></td>
+		<td><%= budgeted - actual %></td>
 	</tr>
 	<% end %>
 	</tbody>
 </table>
+<h2>Expenses</h2>
+<table class="table table-border table-stripe">
+		<thead>
+		<tr>
+			<th>Category</th>
+			<th>Budgeted</th>
+			<th>Actual</th>
+			<th>Difference</th>
+		</tr>
+		</thead>
+		<tbody>
+		<% @budget.expense_categories.each do |bc| %>
+		<tr>
+			<td><%= bc.category.name %></td>
+			<td><%= budgeted = bc.budgeted_for_period(@period) %></td>
+			<td><%= actual = bc.actual_for_period(@period) %></td>
+			<td><%= budgeted - actual %></td>
+		</tr>
+		<% end %>
+		</tbody>
+	</table>
