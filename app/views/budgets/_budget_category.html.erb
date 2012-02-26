@@ -1,0 +1,29 @@
+<div id="new_budget_category" class="modal hide fade">
+	<%= form_for [@budget, @budget_category], :remote => true, :html => {:'data-type' => 'json', :class => "form-horizontal"} do |f| %>
+	<div class="modal-header">
+		<a class="close" data-dismiss="modal">&times;</a>
+		<h3><%= t('budget_categories.form.headers.add') %></h3>
+	</div>
+	<div class="modal-body">
+		<div class="control-group">
+			<%= f.label :category, :class => "control-label" %>
+			<div class="controls">
+				<%= f.collection_select :category_id, Category.all, :id, :display_name %>
+			</div>
+		</div>
+		<div class="control-group">
+			<%= f.label BudgetCategory.human_attribute_name('amount'), :class => "control-label" %>
+			<div class="controls">
+				<div class="input-append">
+					<%= f.text_field :amount %>
+					<span class="add-on"><%= t('number.currency.format.unit') %>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<%= f.submit t('budget_categories.form.submit'), :class => "btn btn-primary" %>
+		<a href="#" class="btn" data-dismiss="modal"><%= t('close') %></a>
+	</div>
+	<% end %>
+</div>

@@ -13,6 +13,12 @@
 		<small><%= @period.start_date %> - <%= @period.end_date %></small>
 	</h1>
 </div>
+<div class="actions">
+	<%= render :partial => "budget_category" %>
+	<button class="btn btn-small" data-toggle="modal" data-target="#new_budget_category">
+	  Add category
+	</button>
+</div>
 <div class="well">
 	<div class="row-fluid">
 		<div class="span6">

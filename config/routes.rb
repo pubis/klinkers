@@ -14,7 +14,9 @@ Klinkers::Application.routes.draw do
     resources :transactions
   end
   
-  resources :budgets
+  resources :budgets do
+    resources :budget_categories
+  end
 
   resources :categories
 

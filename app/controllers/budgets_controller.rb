@@ -15,6 +15,7 @@ class BudgetsController < ApplicationController
     else
       @period = @budget.active_period
     end
+    @budget_category = @budget.budget_categories.new
   end
   
   def create
