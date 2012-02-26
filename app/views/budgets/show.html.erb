@@ -22,56 +22,89 @@
 <div class="well">
 	<div class="row-fluid">
 		<div class="span6">
-			<p>Budgeted income: <%= budgeted_income = @budget.budgeted_income_for_period(@period) %></p>
-			<p>Actual income: <%= actual_income = @budget.actual_income_for_period(@period) %></p>
+			<p>Budgeted income: <%= number_to_currency(budgeted_income = @budget.budgeted_income_for_period(@period)) %></p>
+			<p>Actual income: <%= number_to_currency(actual_income = @budget.actual_income_for_period(@period)) %></p>
 			<%= progress_bar(actual_income, budgeted_income) %>
 		</div>
 		<div class="span6">
-			<p>Budgeted expense: <%= budgeted_expense = @budget.budgeted_expense_for_period(@period) %></p>
-			<p>Actual expense: <%= actual_expense = @budget.actual_expense_for_period(@period) %></p>
+			<p>Budgeted expense: <%= number_to_currency(budgeted_expense = @budget.budgeted_expense_for_period(@period)) %></p>
+			<p>Actual expense: <%= number_to_currency(actual_expense = @budget.actual_expense_for_period(@period)) %></p>
 			<%= progress_bar(actual_expense, budgeted_expense) %>
 		</div>
 	</div>
 </div>
-<h2>Income</h2>
-<table class="table table-border table-stripe">
-	<thead>
-	<tr>
-		<th>Category</th>
-		<th>Budgeted</th>
-		<th>Actual</th>
-		<th>Difference</th>
-	</tr>
-	</thead>
-	<tbody>
-	<% @budget.income_categories.each do |bc| %>
-	<tr>
-		<td><%= bc.category.name %></td>
-		<td><%= budgeted = bc.budgeted_for_period(@period) %></td>
-		<td><%= actual = bc.actual_for_period(@period) %></td>
-		<td><%= budgeted - actual %></td>
-	</tr>
-	<% end %>
-	</tbody>
-</table>
-<h2>Expenses</h2>
-<table class="table table-border table-stripe">
-		<thead>
-		<tr>
-			<th>Category</th>
-			<th>Budgeted</th>
-			<th>Actual</th>
-			<th>Difference</th>
-		</tr>
-		</thead>
-		<tbody>
-		<% @budget.expense_categories.each do |bc| %>
-		<tr>
-			<td><%= bc.category.name %></td>
-			<td><%= budgeted = bc.budgeted_for_period(@period) %></td>
-			<td><%= actual = bc.actual_for_period(@period) %></td>
-			<td><%= budgeted - actual %></td>
-		</tr>
-		<% end %>
-		</tbody>
-	</table>
+<div class="tabbable">
+	<ul class="nav nav-tabs">
+		<li class="active"><a href="#details" data-toggle="tab">Details</a></li>
+		<li><a href="#progress" data-toggle="tab">Progress</a></li>
+	</ul>
+	<div class="tab-content">
+		<div class="tab-pane active" id="details">
+			<h2>Income</h2>
+			<table class="table table-border table-stripe">
+				<thead>
+				<tr>
+					<th>Category</th>
+					<th>Budgeted</th>
+					<th>Actual</th>
+					<th>Difference</th>
+				</tr>
+				</thead>
+				<tbody>
+				<% @budget.income_categories.each do |bc| %>
+				<tr>
+					<td><%= bc.category.name %></td>
+					<td><%= number_to_currency(budgeted = bc.budgeted_for_period(@period)) %></td>
+					<td><%= number_to_currency(actual = bc.actual_for_period(@period)) %></td>
+					<td><%= number_to_currency(budgeted - actual) %></td>
+				</tr>
+				<% end %>
+				</tbody>
+			</table>
+			<h2>Expenses</h2>
+			<table class="table table-border table-stripe">
+					<thead>
+					<tr>
+						<th>Category</th>
+						<th>Budgeted</th>
+						<th>Actual</th>
+						<th>Difference</th>
+					</tr>
+					</thead>
+					<tbody>
+					<% @budget.expense_categories.each do |bc| %>
+					<tr>
+						<td><%= bc.category.name %></td>
+						<td><%= number_to_currency(budgeted = bc.budgeted_for_period(@period)) %></td>
+						<td><%= number_to_currency(actual = bc.actual_for_period(@period)) %></td>
+						<td><%= number_to_currency(budgeted - actual) %></td>
+					</tr>
+					<% end %>
+					</tbody>
+			</table>
+		</div>
+		<div class="tab-pane" id="progress">
+			<% @budget.income_categories.each do |bc| %>
+			<div class="row-fluid">
+				<div class="span4">
+					<%= bc.category.name %>
+				</div>
+				<div class="span8">
+					<%= progress_bar(bc.actual_for_period(@period), bc.budgeted_for_period(@period)) %>
+				</div>
+			</div>
+			<% end %>
+			<% @budget.expense_categories.each do |bc| %>
+			<div class="row-fluid">
+				<div class="span4">
+					<%= bc.category.name %>
+				</div>
+				<div class="span8">
+					<%= progress_bar(bc.actual_for_period(@period), bc.budgeted_for_period(@period)) %>
+				</div>
+			</div>
+			<% end %>
+		</div>
+	</div>
+</div>
+
