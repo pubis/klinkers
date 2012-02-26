@@ -32,13 +32,38 @@ module ApplicationHelper
     will_paginate(pages, :class => 'pagination', :inner_window => 2, :outer_window => 0, :renderer => BootstrapLinkRenderer, :previous_label => '&larr; Previous'.html_safe, :next_label => 'Next &rarr;'.html_safe)
   end
   
-  def progress_bar(value, total)
-    progress = value / total * 100
-    color_class = "progress-success"
-    color_class = "progress-danger" if progress >= 80
+  def success_bar value, total, warn = false, income = false
+    p = value / total * 100
+    color = "progress-success"
+    if warn
+      if income
+        color = "progress-danger" if p <= warn
+      else
+        color = "progress-danger" if p >= warn
+      end
+    end
+        
+    progress_bar p, color
+  end
+
+  def info_bar value, total, warn = false
+    p = value / total * 100
+    color = "progress-info"
+    if warn
+      color = "progress-danger" if p >= warn
+    end
     
+    progress_bar p, color
+  end
+  
+  def progress_bar progress, color_class
     content_tag :div, :class => "progress progress-striped #{color_class}" do
-      content_tag(:div, '', :class => "bar", :style => "width: #{progress}%;")
+      bar progress
     end
   end
+  
+  def bar progress
+    content_tag(:div, '', :class => "bar", :style => "width: #{progress}%;")
+  end
+    
 end
