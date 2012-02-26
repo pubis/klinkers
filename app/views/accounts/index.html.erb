@@ -1,25 +1,81 @@
 <%= content_for :sidebar do %>
+	<%= render :partial => "sidebar/accounts" %>
 <% end %>
 <div class="page-header">
-	<h1>Listing accounts</h1>
+	<h1>Accounts</h1>
 </div>
-<table class="table table-striped">
-	<thead>
-		<tr>
-			<th>Name</th>
-			<th class="right-align">Balance</th>
-			<th>&nbsp;</th>
-			<th>&nbsp;</th>
-		</tr>
-	</thead>
-	<tbody>
-		<% @accounts.users.order("favorite DESC").each do |account| %>
-		<tr>
-			<td><strong><%= link_to account.name, account %></strong></td>
-			<td class="right-align"><%= account.balance %></td>
-			<td>&nbsp;</td>
-			<td><%= link_to "Delete", account, :method => :delete, :confirm => "Are you sure you want to delete #{account.name}?", :class => "btn btn-danger btn-small"%></td>
-		</tr>
-		<% end %>
-	</tbody>
-</table>
+<div class="tabbable">
+	<ul class="nav nav-tabs">
+	  <li class="active"><a href="#users" data-toggle="tab"><%= t('accounts.index.headers.users') %></a></li>
+	  <li><a href="#payees" data-toggle="tab"><%= t('accounts.index.headers.payees') %></a></li>
+	  <li><a href="#system" data-toggle="tab"><%= t('accounts.index.headers.system') %></a></li>
+	</ul>
+	<div class="tab-content">
+		<div class="tab-pane active" id="users">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th class="right-align">Balance</th>
+						<th>&nbsp;</th>
+						<th>&nbsp;</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @accounts.users.order("favorite DESC").each do |account| %>
+					<tr>
+						<td><strong><%= link_to account.name, account %></strong></td>
+						<td class="right-align"><%= number_to_currency(account.balance, :locale => account.currency.locale) %></td>
+						<td>&nbsp;</td>
+						<td><%= link_to "Delete", account, :method => :delete, :confirm => "Are you sure you want to delete #{account.name}?", :class => "btn btn-danger btn-small"%></td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+		<div class="tab-pane" id="payees">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th class="right-align">Balance</th>
+						<th>&nbsp;</th>
+						<th>&nbsp;</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @accounts.payees.order("favorite DESC, name ASC").each do |account| %>
+					<tr>
+						<td><strong><%= link_to account.name, account %></strong></td>
+						<td class="right-align"><%= number_to_currency(account.balance, :locale => account.currency.locale) %></td>
+						<td>&nbsp;</td>
+						<td><%= link_to "Delete", account, :method => :delete, :confirm => "Are you sure you want to delete #{account.name}?", :class => "btn btn-danger btn-small"%></td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+		<div class="tab-pane" id="system">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th class="right-align">Balance</th>
+						<th>&nbsp;</th>
+						<th>&nbsp;</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @accounts.systems.order("name ASC").each do |account| %>
+					<tr>
+						<td><strong><%= link_to account.name, account %></strong></td>
+						<td class="right-align"><%= number_to_currency(account.balance, :locale => account.currency.locale) %></td>
+						<td>&nbsp;</td>
+						<td><%= link_to "Delete", account, :method => :delete, :confirm => "Are you sure you want to delete #{account.name}?", :class => "btn btn-danger btn-small"%></td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
