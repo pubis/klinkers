@@ -78,7 +78,7 @@
 			<% @categories.each do |category| %>
 				<% sum += category.amount.abs %>
 				<tr>
-					<td class="cat_name" data-category="<%= category.id %>"><%= category.display_name %></td>
+					<td class="cat_name" data-category="<%= category.id %>" data-raw="<%= category.display_name %>"><%= category.display_name %></td>
 					<td class="right-align cat_amount"><%= "%.2f" % category.amount.abs if category.amount %></td>
 				</tr>
 			<% end %>
@@ -100,7 +100,7 @@ $(function() {
   var labels = [],
       data = [];
   $("#data td.cat_name").each(function () {
-      labels.push($(this).html());
+      labels.push($(this).data('raw'));
   });
   $("#data td.cat_amount").each(function () {
       data.push(parseFloat($(this).html()));
