@@ -1,4 +1,12 @@
 $(document).ready(function() {
+	var reloadOnClose = false;
+	
+	$('#new_transaction').on('hidden', function () {
+	  if (reloadOnClose === true) {
+			location.reload();
+		}
+	});
+	
 	$('form#new_transaction')
 		.bind('ajax:beforeSend', function(evt, xhr, settings) {
 			var $submitButton = $(this).find('input[name="commit"]');
@@ -28,6 +36,7 @@ $(document).ready(function() {
 		})
 		.bind('ajax:complete', function(evt, xhr, status) {
 			var $submitButton = $(this).find('input[name="commit"]');
+			reloadOnClose = true;
 			$submitButton.button('toggle');
 			this.reset();
 		});
