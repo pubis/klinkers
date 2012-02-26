@@ -4,7 +4,8 @@
 <% ttl = t('sidebar.shortcuts.new_account') %>
 <li><%= link_to "#{icn} #{ttl}".html_safe, new_account_path %></li>
 
-<% icn = '<i class="icon-signal"></i>' %>
-<% ttl = t('sidebar.shortcuts.cash_flow') %>
-<li><%= link_to "#{icn} #{ttl}".html_safe, '#' %></li>
-	
+<% if current_user.budget.present? %>	
+<% icn = '<i class="icon-calendar"></i>' %>
+<% ttl = current_user.budget.name %>
+<li><%= link_to "#{icn} #{ttl}".html_safe, current_user.budget %></li>
+<% end %>
