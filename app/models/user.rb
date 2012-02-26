@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_secure_password
   
-  store :settings, accessors: [:default_account, :default_payee, :language]
+  store :settings, accessors: [:default_account, :default_payee, :language, :active_budget]
   
   validates :username, :presence => true
   validates :email, :presence => true
@@ -22,6 +22,14 @@ class User < ActiveRecord::Base
   
   def locale
     self.language.blank? ? "en" : self.language
+  end
+  
+  def budget
+    if self.active_budget.present?
+      budgets.find(self.active_budget)
+    else
+      nil
+    end
   end
 
   private

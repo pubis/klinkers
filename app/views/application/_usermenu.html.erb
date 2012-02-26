@@ -7,6 +7,12 @@
 			<li><%= link_to t('navbar.accounts_menu.list'), accounts_path %></li>
 		</ul>
 	</li>
-	<li class><%= link_to t('navbar.budgets'), budgets_path %></li>
+	<li class>
+		<% if current_user.budget.nil? %>
+			<%= link_to t('navbar.budgets'), budgets_path %>
+		<% else %>
+			<%= link_to t('navbar.budgets'), current_user.budget %>
+		<% end %>
+	</li>
 	<li class><%= link_to t('navbar.categories'), categories_path %></li>
 </ul>
