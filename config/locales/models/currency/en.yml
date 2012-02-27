@@ -1,0 +1,8 @@
+en:
+  activerecord:
+    models:
+      currency: Currency
+    attributes:
+      currency:
+        name: Name
+        code: Code

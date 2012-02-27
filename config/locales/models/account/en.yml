@@ -1,0 +1,13 @@
+en:
+  activerecord:
+    models:
+      account: Account
+    attributes:
+      account:
+        name: Name
+        number: Number
+        opening_balance: Opening balance
+        opening_date: Opening date
+        favorite: Favorite
+        payee: Payee
+        system: System

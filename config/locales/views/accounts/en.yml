@@ -1,0 +1,7 @@
+en:
+  accounts:
+    sidebar:
+      headers:
+        account: Account
+      account:
+        settings: Settings

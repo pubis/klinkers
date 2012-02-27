@@ -2,7 +2,7 @@
 <li class="nav-header"><%= t('account.sidebar.headers.account') %></li>
 	<li>
 		<% icn = '<i class="icon-edit"></i>' %>
-		<% ttl = t('accounts.sidebar.account.edit') %>
+		<% ttl = t('accounts.sidebar.account.settings') %>
 		<%= link_to "#{icn} #{ttl}".html_safe, edit_account_path(@account) %>
 	</li>
 <%= render :partial => "sidebar/accounts" %>

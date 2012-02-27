@@ -1,0 +1,11 @@
+en:
+  activerecord:
+    models:
+      user: User
+    attributes:
+      user:
+        username: Username
+        email: Email
+        password: Password
+        first_name: First name
+        last_name: Last name

@@ -4,8 +4,8 @@
       user: Användare
     attributes:
       user:
-        username: användarnamn
-        email: epost
-        password: lösenord
-        first_name: förnamn
-        last_name: efternamn
+        username: Användarnamn
+        email: Epost
+        password: Lösenord
+        first_name: Förnamn
+        last_name: Efternamn

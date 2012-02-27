@@ -1,0 +1,10 @@
+en:
+  activerecord:
+    models:
+      category: Category
+    attributes:
+      category:
+        parent: Parent
+        name: Name
+        description: Description
+        expense: Expense
