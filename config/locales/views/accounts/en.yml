@@ -5,3 +5,7 @@ en:
         account: Account
       account:
         settings: Settings
+    settings:
+      title: Account settings
+    form:
+      submit: Save

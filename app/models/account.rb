@@ -44,6 +44,13 @@ class Account < ActiveRecord::Base
     @balance_cache ||= transaction_items.sum(:amount)
   end
   
+  def available
+    if credit_limit.present? and balance < 0
+      return balance + credit_limit
+    end
+    balance
+  end
+  
 #  def balance_as_of(date)
 #    transaction_items.where("transactions.operation_date < ?", date).sum(:amount)
 #  private

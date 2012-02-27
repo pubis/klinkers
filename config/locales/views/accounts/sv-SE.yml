@@ -5,3 +5,7 @@
         account: Konto
       account:
         settings: Inställningar
+    settings:
+      title: Kontoinställningar
+    form:
+      submit: Spara
