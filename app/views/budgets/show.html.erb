@@ -96,7 +96,7 @@
 					<%= bc.category.name %>
 				</div>
 				<div class="span8">
-					<%= success_bar(bc.actual_for_period(@period), bc.budgeted_for_period(@period), 10, true) %>
+					<%= budget_category_bar(bc.actual_for_period(@period), bc.budgeted_for_period(@period), true) %>
 				</div>
 			</div>
 			<% end %>
@@ -107,7 +107,7 @@
 					<%= bc.category.name %>
 				</div>
 				<div class="span8">
-					<%= success_bar(bc.actual_for_period(@period), bc.budgeted_for_period(@period), 90) %>
+					<%= budget_category_bar(bc.actual_for_period(@period), bc.budgeted_for_period(@period)) %>
 				</div>
 			</div>
 			<% end %>

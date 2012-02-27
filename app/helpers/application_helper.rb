@@ -32,6 +32,19 @@ module ApplicationHelper
     will_paginate(pages, :class => 'pagination', :inner_window => 2, :outer_window => 0, :renderer => BootstrapLinkRenderer, :previous_label => '&larr; Previous'.html_safe, :next_label => 'Next &rarr;'.html_safe)
   end
   
+  def budget_category_bar value, total, income = false
+    p = value / total * 100
+    color = "progress-success"
+    if income
+      color = "progress-warning" if p <= 50
+      color = "progress-danger" if p <= 25
+    else
+      color = "progress-warning" if p >= 75
+      color = "progress-danger" if p > 100
+    end
+    progress_bar p, color
+  end
+  
   def success_bar value, total, warn = false, income = false
     p = value / total * 100
     color = "progress-success"

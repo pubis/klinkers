@@ -26,3 +26,11 @@ input.input-fat {
 	height: 32px;
 	padding-left: 14px;
 }
+
+// Warning (orange) progress bar
+.progress-warning .bar {
+  @include gradient-vertical(lighten($orange, 15%), $orange);
+}
+.progress-warning.progress-striped .bar {
+  @include gradient-striped(lighten($orange, 15%));
+}
