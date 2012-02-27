@@ -33,7 +33,8 @@ class UsersController < ApplicationController
         @start_date,
         @end_date
       ],
-      :group => "categories.id"
+      :group => "categories.id",
+      :order => "amount ASC"
     )    
   end
   
