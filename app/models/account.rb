@@ -46,7 +46,7 @@ class Account < ActiveRecord::Base
   
   def available
     if credit_limit.present? and balance < 0
-      return balance + credit_limit
+      return balance + credit_limit.to_d
     end
     balance
   end
