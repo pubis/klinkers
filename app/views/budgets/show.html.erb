@@ -56,7 +56,8 @@
 				</tr>
 				</thead>
 				<tbody>
-				<% @budget.income_categories.each do |bc| %>
+				<% income_categories = @budget.income_categories.sort! { |a, b| a.category_name <=> b.category_name } %>
+				<% income_categories.each do |bc| %>
 				<tr>
 					<td><%= bc.category.display_name %></td>
 					<td><%= number_to_currency(budgeted = bc.budgeted_for_period(@period)) %></td>
@@ -77,7 +78,8 @@
 					</tr>
 					</thead>
 					<tbody>
-					<% @budget.expense_categories.each do |bc| %>
+					<% expense_categories = @budget.expense_categories.sort! { |a, b| a.category_name <=> b.category_name } %>
+					<% expense_categories.each do |bc| %>
 					<tr>
 						<td><%= bc.category.display_name %></td>
 						<td><%= number_to_currency(budgeted = bc.budgeted_for_period(@period)) %></td>
@@ -90,7 +92,7 @@
 		</div>
 		<div class="tab-pane" id="progress">
 			<h2>Income</h2>
-			<% @budget.income_categories.each do |bc| %>
+			<% income_categories.each do |bc| %>
 			<div class="row-fluid">
 				<div class="span4">
 					<%= bc.category.name %>
@@ -101,10 +103,10 @@
 			</div>
 			<% end %>
 			<h2>Expenses</h2>
-			<% @budget.expense_categories.each do |bc| %>
+			<% expense_categories.each do |bc| %>
 			<div class="row-fluid">
 				<div class="span4">
-					<%= bc.category.name %>
+					<%= bc.category.display_name %>
 				</div>
 				<div class="span8">
 					<%= budget_category_bar(bc.actual_for_period(@period), bc.budgeted_for_period(@period)) %>
