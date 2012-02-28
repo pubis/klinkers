@@ -95,7 +95,7 @@
 			<% income_categories.each do |bc| %>
 			<div class="row-fluid">
 				<div class="span4">
-					<%= bc.category.name %>
+					<%= bc.category_name %>
 				</div>
 				<div class="span8">
 					<%= budget_category_bar(bc.actual_for_period(@period), bc.budgeted_for_period(@period), true) %>
@@ -106,7 +106,7 @@
 			<% expense_categories.each do |bc| %>
 			<div class="row-fluid">
 				<div class="span4">
-					<%= bc.category.display_name %>
+					<%= bc.category_name %>
 				</div>
 				<div class="span8">
 					<%= budget_category_bar(bc.actual_for_period(@period), bc.budgeted_for_period(@period)) %>
