@@ -24,13 +24,11 @@
 				<tbody>
 					<% @accounts.users.order("favorite DESC").each do |account| %>
 					<tr>
-						<td><strong><%= link_to account.name, account %></strong></td>
+						<td><strong><%= link_to account.name, account %></strong> <%= '<i class="icon-star"></i>'.html_safe if account.favorite? %></td>
 						<td class="right-align"><%= number_to_currency(account.balance, :locale => account.currency.locale) %></td>
 						<td>&nbsp;</td>
 						<td>
-							<%= link_to "Delete", account, :method => :delete, :confirm => "Are you sure you want to delete #{account.name}?", :class => "btn btn-danger btn-small"%>
-							<%= '<i class="icon-star"></i>' if account.favorite? %>
-						</td>
+							<%= link_to "Delete", account, :method => :delete, :confirm => "Are you sure you want to delete #{account.name}?", :class => "btn btn-danger btn-small"%></td>
 					</tr>
 					<% end %>
 				</tbody>
@@ -49,13 +47,11 @@
 				<tbody>
 					<% @accounts.payees.order("favorite DESC, name ASC").each do |account| %>
 					<tr>
-						<td><strong><%= link_to account.name, account %></strong></td>
+						<td><strong><%= link_to account.name, account %></strong> <%= '<i class="icon-star"></i>'.html_safe if account.favorite? %></td>
 						<td class="right-align"><%= number_to_currency(account.balance, :locale => account.currency.locale) %></td>
 						<td>&nbsp;</td>
 						<td>
-							<%= link_to "Delete", account, :method => :delete, :confirm => "Are you sure you want to delete #{account.name}?", :class => "btn btn-danger btn-small"%>
-							<%= '<i class="icon-star"></i>' if account.favorite? %>
-						</td>
+							<%= link_to "Delete", account, :method => :delete, :confirm => "Are you sure you want to delete #{account.name}?", :class => "btn btn-danger btn-small"%></td>
 					</tr>
 					<% end %>
 				</tbody>
@@ -74,13 +70,10 @@
 				<tbody>
 					<% @accounts.systems.order("name ASC").each do |account| %>
 					<tr>
-						<td><strong><%= link_to account.name, account %></strong></td>
+						<td><strong><%= link_to account.name, account %></strong> <%= '<i class="icon-star"></i>'.html_safe if account.favorite? %></td>
 						<td class="right-align"><%= number_to_currency(account.balance, :locale => account.currency.locale) %></td>
 						<td>&nbsp;</td>
-						<td>
-							<%= link_to "Delete", account, :method => :delete, :confirm => "Are you sure you want to delete #{account.name}?", :class => "btn btn-danger btn-small"%>
-							<%= '<i class="icon-star"></i>' if account.favorite? %>
-						</td>
+						<td><%= link_to "Delete", account, :method => :delete, :confirm => "Are you sure you want to delete #{account.name}?", :class => "btn btn-danger btn-small"%></td>
 					</tr>
 					<% end %>
 				</tbody>
