@@ -1,0 +1,4 @@
+<% balance = '<span class="nav-item-right nav-item-amount">' + number_to_currency(account.available, :locale => account.currency.locale) + '</span>' %>
+<%= content_tag :li, :class => (active ? "active" : "") do %>
+	<%= link_to "#{account.name} #{balance}".html_safe, account %>
+<% end %>

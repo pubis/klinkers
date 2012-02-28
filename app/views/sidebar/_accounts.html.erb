@@ -1,17 +1,10 @@
 <li class="nav-header"></i><%= t('accounts.favorites') %></li>
 <% current_user.accounts.users.favorites.each do |a| %>
 	<% active = a == @account %>
-	<% icn = active ? '<i class="icon-star icon-white"></i>' : '<i class="icon-star"></i>' %>
-	<% bal = '<span class="nav-item-right nav-item-amount">' + number_to_currency(a.available, :locale => a.currency.locale) + '</span>' %>
-	<li class="<%= active ? 'active' : '' %>">
-		<%= link_to "#{icn} #{a.name} #{bal}".html_safe, a %>
-	</li>
+	<%= render partial: "sidebar/account_item", locals: {account: a, active: active } %>
 <% end %>
 <li class="nav-header"></i><%= t('accounts.others')%></li>
 <% current_user.accounts.users.no_favorites.each do |a| %>
 	<% active = a == @account %>
-	<% bal = '<span class="nav-item-right nav-item-amount">' + number_to_currency(a.available, :locale => a.currency.locale) + '</span>' %>
-	<li class="<%= active ? 'active' : '' %>">
-		<%= link_to "#{a.name} #{bal}".html_safe, a %>
-	</li>
+	<%= render partial: "sidebar/account_item", locals: {account: a, active: active } %>
 <% end %>
