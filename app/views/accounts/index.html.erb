@@ -27,7 +27,10 @@
 						<td><strong><%= link_to account.name, account %></strong></td>
 						<td class="right-align"><%= number_to_currency(account.balance, :locale => account.currency.locale) %></td>
 						<td>&nbsp;</td>
-						<td><%= link_to "Delete", account, :method => :delete, :confirm => "Are you sure you want to delete #{account.name}?", :class => "btn btn-danger btn-small"%></td>
+						<td>
+							<%= link_to "Delete", account, :method => :delete, :confirm => "Are you sure you want to delete #{account.name}?", :class => "btn btn-danger btn-small"%>
+							<%= '<i class="icon-star"></i>' if account.favorite? %>
+						</td>
 					</tr>
 					<% end %>
 				</tbody>
@@ -49,7 +52,10 @@
 						<td><strong><%= link_to account.name, account %></strong></td>
 						<td class="right-align"><%= number_to_currency(account.balance, :locale => account.currency.locale) %></td>
 						<td>&nbsp;</td>
-						<td><%= link_to "Delete", account, :method => :delete, :confirm => "Are you sure you want to delete #{account.name}?", :class => "btn btn-danger btn-small"%></td>
+						<td>
+							<%= link_to "Delete", account, :method => :delete, :confirm => "Are you sure you want to delete #{account.name}?", :class => "btn btn-danger btn-small"%>
+							<%= '<i class="icon-star"></i>' if account.favorite? %>
+						</td>
 					</tr>
 					<% end %>
 				</tbody>
@@ -71,7 +77,10 @@
 						<td><strong><%= link_to account.name, account %></strong></td>
 						<td class="right-align"><%= number_to_currency(account.balance, :locale => account.currency.locale) %></td>
 						<td>&nbsp;</td>
-						<td><%= link_to "Delete", account, :method => :delete, :confirm => "Are you sure you want to delete #{account.name}?", :class => "btn btn-danger btn-small"%></td>
+						<td>
+							<%= link_to "Delete", account, :method => :delete, :confirm => "Are you sure you want to delete #{account.name}?", :class => "btn btn-danger btn-small"%>
+							<%= '<i class="icon-star"></i>' if account.favorite? %>
+						</td>
 					</tr>
 					<% end %>
 				</tbody>
