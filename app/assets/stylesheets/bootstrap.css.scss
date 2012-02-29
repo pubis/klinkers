@@ -22,6 +22,26 @@ body { padding-top: 60px; }
 	color: #333;
 }
 
+.sidebar-nav {
+	padding: 9px 0;
+}
+
+.page-header {
+	margin-top: 0px;
+}
+
+@media (max-width: 480px) { 
+	.hide-on-small-device {
+		display: none;
+	}
+}
+
+@media (max-width: 768px) { 
+	.hide-on-small-device {
+		display: none;
+	}
+}
+
 input.input-fat {
 	font-size: 15px;
 	height: 32px;
