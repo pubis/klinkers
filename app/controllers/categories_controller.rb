@@ -11,7 +11,7 @@ class CategoriesController < ApplicationController
     start_date = Date.today.beginning_of_year
 
     @months = []
-    while start_date < Date.today
+    while start_date <= Date.today
       item = TransactionItem.all(
         :select => "SUM(transaction_items.amount) AS amount",
         :joins => ["LEFT JOIN transactions ON (transactions.id = transaction_items.transaction_id)"],
