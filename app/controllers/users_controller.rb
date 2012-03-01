@@ -28,7 +28,7 @@ class UsersController < ApplicationController
         "LEFT JOIN transactions ON transaction_items.transaction_id = transactions.id"
       ],
       :conditions => [
-        "categories.expense = ? AND amount IS NOT NULL AND transactions.operation_date > ? AND transactions.operation_date <= ?",
+        "categories.expense = ? AND amount IS NOT NULL AND transactions.operation_date >= ? AND transactions.operation_date <= ?",
         true,
         @start_date,
         @end_date

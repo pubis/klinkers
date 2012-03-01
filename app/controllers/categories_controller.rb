@@ -16,7 +16,7 @@ class CategoriesController < ApplicationController
         :select => "SUM(transaction_items.amount) AS amount",
         :joins => ["LEFT JOIN transactions ON (transactions.id = transaction_items.transaction_id)"],
         :conditions => [
-          "transaction_items.account_id IN (?) AND transaction_items.category_id = ? AND transactions.operation_date > ? AND transactions.operation_date <= ?",
+          "transaction_items.account_id IN (?) AND transaction_items.category_id = ? AND transactions.operation_date >= ? AND transactions.operation_date <= ?",
           account_ids,
           params[:id],
           start_date,
