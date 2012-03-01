@@ -50,11 +50,9 @@ $(function() {
 
 	var bc = r.barchart(10, 10, 330, 120, [data]);
 	bc.hover(function () {
-		this.bar.stop();
-		this.bar.scale(1.1, 1.1, this.cx, this.cy);
+		this.flag = r.popup(this.bar.x, this.bar.y, this.bar.value || "0").insertBefore(this);
 	}, function () {
-		this.bar.animate({ transform: 's1 1 ' + this.cx + ' ' + this.cy }, 500, "bounce");
+		this.flag.animate({opacity: 0}, 300, function () {this.remove();});
 	});
-	
 });	
 </script>
