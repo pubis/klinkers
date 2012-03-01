@@ -63,6 +63,7 @@
 		</table>
 	</div>
 	<div class="span6">
+		<section id="spending_by_category">
 		<h2><%= t('users.overview.top_expense_categories') %></h2>
 		<p><%= @start_date %> - <%= @end_date %></p>
 		<div id="piechart"></div>
@@ -79,17 +80,37 @@
 				<% sum += category.amount.abs %>
 				<tr>
 					<td class="cat_name" data-category="<%= category.id %>" data-raw="<%= category.display_name %>"><%= category.display_name %></td>
-					<td class="right-align cat_amount"><%= "%.2f" % category.amount.abs if category.amount %></td>
+					<td class="right-align cat_amount" data-raw="<%= category.amount.abs %>"><%= number_to_currency category.amount.abs %></td>
 				</tr>
 			<% end %>
 			</tbody>
 			<tfoot>
 			<tr>
 				<th>Total</th>
-				<th class="right-align"><%= "%.2f" % sum %></th>
+				<th class="right-align"><%= number_to_currency sum %></th>
 			</tr>
 			</tfoot>
 		</table>
+		</section>
+		<section id="net_worth">
+			<h2><%= t('net_worth') %></h2>
+			<table class="table table-striped table-condensed">
+				<thead>
+				<tr>
+					<th>Date</th>
+					<th class="right-align">Amount</th>
+				</tr>
+				</thead>
+				<tbody>
+				<% @net_worths.each do |nw| %>
+				<tr>
+					<td><%= nw[:date] %></td>
+					<td class="right-align"><%= number_to_currency(nw[:net_worth]) %></td>
+				</tr>
+				<% end %>
+				</tbody>
+			</table>
+		</section>
 	</div>
 </div>
 <script type="text/javascript" charset="utf-8">
@@ -103,7 +124,7 @@ $(function() {
       labels.push($(this).data('raw'));
   });
   $("#data td.cat_amount").each(function () {
-      data.push(parseFloat($(this).html()));
+      data.push(parseFloat($(this).data('raw')));
   });
 
 

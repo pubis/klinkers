@@ -35,7 +35,25 @@ class UsersController < ApplicationController
       ],
       :group => "categories.id",
       :order => "amount ASC"
-    )    
+    )
+    
+    @net_worths = []
+    sd = Date.today.beginning_of_year
+    while sd <= Date.today
+      nw = 0
+      as = []
+      @accounts.each do |a|
+        b = a.balance_as_of sd
+        nw += b
+        as << {id: a.id, name: a.name, balance: b}
+      end
+      @net_worths << {
+        date: sd,
+        net_worth: nw,
+        accounts: as
+      }
+      sd += 1.month
+    end
   end
   
   def create

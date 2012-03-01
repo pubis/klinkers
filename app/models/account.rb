@@ -51,9 +51,11 @@ class Account < ActiveRecord::Base
     balance
   end
   
-#  def balance_as_of(date)
-#    transaction_items.where("transactions.operation_date < ?", date).sum(:amount)
-#  private
+  def balance_as_of(date)
+    transaction_items.joins(:transaction).where("transactions.operation_date < ?", date).sum(:amount)
+  end
+
+  private
   
   def create_opening_transaction
     # Skip for system accounts and payees
