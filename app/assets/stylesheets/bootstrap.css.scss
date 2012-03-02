@@ -1,57 +1,5 @@
-@import "twitter/bootstrap";
-body { padding-top: 60px; }
-@import "twitter/bootstrap/responsive";
-
 .nav-list .active > a:hover {
   color: white;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
   background-color: #0088cc;
-}
-
-.nav-item-right {
-	float: right;
-}
-
-.nav-list .active > a {
-	.nav-item-right {
-		color: white;
-	}
-}
-
-.nav-item-amount {
-	color: #333;
-}
-
-.sidebar-nav {
-	padding: 9px 0;
-}
-
-.page-header {
-	margin-top: 0px;
-}
-
-@media (max-width: 480px) { 
-	.hide-on-small-device {
-		display: none;
-	}
-}
-
-@media (max-width: 768px) { 
-	.hide-on-small-device {
-		display: none;
-	}
-}
-
-input.input-fat {
-	font-size: 15px;
-	height: 32px;
-	padding-left: 14px;
-}
-
-// Warning (orange) progress bar
-.progress-warning .bar {
-  @include gradient-vertical(lighten($orange, 15%), $orange);
-}
-.progress-warning.progress-striped .bar {
-  @include gradient-striped(lighten($orange, 15%));
 }

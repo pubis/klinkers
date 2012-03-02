@@ -1,0 +1,73 @@
+@import "twitter/bootstrap/bootstrap";
+body { padding-top: 60px; }
+@import "twitter/bootstrap/responsive";
+
+// Set the correct sprite paths
+@iconSpritePath: asset-path('twitter/bootstrap/glyphicons-halflings.png');
+@iconWhiteSpritePath: asset-path('twitter/bootstrap/glyphicons-halflings-white.png');
+
+// Your custom LESS stylesheets goes here
+//
+// Since bootstrap was imported above you have access to its mixins which
+// you may use and inherit here
+//
+// If you'd like to override bootstrap's own variables, you can do so here as well
+// See http://twitter.github.com/bootstrap/less.html for their names and documentation
+//
+// Example:
+// @linkColor: #ff0000;
+
+// Warning (orange) progress bar
+.progress-warning .bar {
+  #gradient > .vertical(#fbb450, #f89406);
+}
+.progress-warning.progress-striped .bar {
+  #gradient > .striped(#fbb450);
+}
+
+// Navigation extension
+.nav-item-right {
+	float: right;
+}
+
+.nav-list .active > a {
+	.nav-item-right {
+		color: white;
+	}
+}
+
+.nav-item-amount {
+	color: #333;
+	.negative {
+	  color: @red;
+	}
+}
+
+.sidebar-nav {
+	padding: 9px 0;
+}
+
+// Typography
+.page-header {
+	margin-top: 0px;
+}
+
+// Media queries
+@media (max-width: 480px) { 
+	.hide-on-small-device {
+		display: none;
+	}
+}
+
+@media (max-width: 768px) { 
+	.hide-on-small-device {
+		display: none;
+	}
+}
+
+// Forms
+input.input-fat {
+	font-size: 15px;
+	height: 32px;
+	padding-left: 14px;
+}
