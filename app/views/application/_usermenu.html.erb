@@ -17,7 +17,7 @@
 	<li class="dropdown">
 		<%= link_to (t('navbar.budgets') + ' <b class="caret"></b>').html_safe, '#', :class => 'dropdown-toggle', :data => {:toggle => 'dropdown'} %>
 		<ul class="dropdown-menu">
-			<li><%= link_to t('navbar.budgets_menu.new'), new_account_path %></li>
+			<li><%= link_to t('navbar.budgets_menu.new'), new_budget_path %></li>
 			<% if !current_user.budget.nil? %>
 			<li class="divider"></li>
 			<li class="nav-header"><%= t('navbar.budgets_menu.headers.active') %></li>
