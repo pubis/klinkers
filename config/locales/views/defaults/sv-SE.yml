@@ -9,8 +9,11 @@
   accounts:
     favorites: Favoritkonton
     others: Övriga konton
-    
+  
+  date: Datum
   sum: Summa
   net_worth: Egenkapital
   balance: Saldo
   amount: Belopp
+  income: Inkomst
+  expense: Utgift

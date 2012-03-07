@@ -7,5 +7,12 @@
         settings: Inställningar
     settings:
       title: Kontoinställningar
+    new:
+      header: Skapa nytt konto
     form:
       submit: Spara
+    types:
+      account: Konto
+      creditcard: Kreditkort
+      loan: Lån
+      portfolio: Portfölj

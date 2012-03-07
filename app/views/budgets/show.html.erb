@@ -21,19 +21,19 @@
 <div class="actions">
 	<%= render :partial => "budget_category" %>
 	<button class="btn btn-small" data-toggle="modal" data-target="#new_budget_category">
-	  Add category
+	  <%= t('budgets.show.actions.add_category') %>
 	</button>
 </div>
 <div class="well">
 	<div class="row-fluid">
 		<div class="span6">
-			<p>Budgeted income: <%= number_to_currency(budgeted_income = @budget.budgeted_income_for_period(@period)) %></p>
-			<p>Actual income: <%= number_to_currency(actual_income = @budget.actual_income_for_period(@period)) %></p>
+			<p><%= t('budgets.show.well.budgeted.income') %>: <%= number_to_currency(budgeted_income = @budget.budgeted_income_for_period(@period)) %></p>
+			<p><%= t('budgets.show.well.actual.income') %>: <%= number_to_currency(actual_income = @budget.actual_income_for_period(@period)) %></p>
 			<%= success_bar(actual_income, budgeted_income, 10, true) %>
 		</div>
 		<div class="span6">
-			<p>Budgeted expense: <%= number_to_currency(budgeted_expense = @budget.budgeted_expense_for_period(@period)) %></p>
-			<p>Actual expense: <%= number_to_currency(actual_expense = @budget.actual_expense_for_period(@period)) %></p>
+			<p><%= t('budgets.show.well.budgeted.expense') %>: <%= number_to_currency(budgeted_expense = @budget.budgeted_expense_for_period(@period)) %></p>
+			<p><%= t('budgets.show.well.actual.expense') %>: <%= number_to_currency(actual_expense = @budget.actual_expense_for_period(@period)) %></p>
 			<%= success_bar(actual_expense, budgeted_expense, 90) %>
 		</div>
 	</div>
@@ -45,14 +45,14 @@
 	</ul>
 	<div class="tab-content">
 		<div class="tab-pane active" id="details">
-			<h2>Income</h2>
+			<h2><%= t('income').titleize %></h2>
 			<table class="table table-border table-stripe">
 				<thead>
 				<tr>
-					<th>Category</th>
-					<th>Budgeted</th>
-					<th>Actual</th>
-					<th>Difference</th>
+					<th><%= t('budgets.show.headers.category') %></th>
+					<th><%= t('budgets.show.headers.budgeted') %></th>
+					<th><%= t('budgets.show.headers.actual') %></th>
+					<th><%= t('budgets.show.headers.difference') %></th>
 				</tr>
 				</thead>
 				<tbody>
@@ -67,14 +67,14 @@
 				<% end %>
 				</tbody>
 			</table>
-			<h2>Expenses</h2>
+			<h2><%= t('income').titleize %></h2>
 			<table class="table table-border table-stripe">
 					<thead>
 					<tr>
-						<th>Category</th>
-						<th>Budgeted</th>
-						<th>Actual</th>
-						<th>Difference</th>
+						<th><%= t('budgets.show.headers.category') %></th>
+						<th><%= t('budgets.show.headers.budgeted') %></th>
+						<th><%= t('budgets.show.headers.actual') %></th>
+						<th><%= t('budgets.show.headers.difference') %></th>
 					</tr>
 					</thead>
 					<tbody>

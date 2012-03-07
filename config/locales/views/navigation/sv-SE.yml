@@ -6,6 +6,7 @@
       new: Nytt
       list: Lista
     categories: Kategorier
+    budgets: Budget
 
   sidebar:
     header:

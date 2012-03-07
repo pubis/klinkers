@@ -7,5 +7,12 @@ en:
         settings: Settings
     settings:
       title: Account settings
+    new:
+      header: Create new account
     form:
       submit: Save
+      types:
+        account: Account
+        creditcard: Credit Card
+        loan: Loan
+        portfolio: Portfolio

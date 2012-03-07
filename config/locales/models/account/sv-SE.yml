@@ -4,6 +4,7 @@
       account: Konto
     attributes:
       account:
+        account_type: Kontotyp
         name: Namn
         number: Nummer
         opening_balance: Öppningssaldo

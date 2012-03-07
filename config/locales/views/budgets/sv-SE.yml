@@ -2,3 +2,24 @@
   budgets:
     form:
       submit: Spara budget
+    sidebar:
+      headers:
+        budget_accounts: Budgeterade konton
+    show:
+      actions:
+        add_category: Lägg till kategori
+      well:
+        budgeted:
+          income: Budgeterad inkomst
+          expense: Budgeterad utgift
+        actual:
+          income: Verklig inkomst
+          expense: Verklig utgift
+      tabs:
+        details: Detaljer
+        progress: Progress
+      headers:
+        category: Kategori
+        budgeted: Budgeterad
+        actual: Verklig
+        difference: Avvikelse

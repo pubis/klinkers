@@ -2,3 +2,24 @@ en:
   budgets:
     form:
       submit: Save budget
+    sidebar:
+      headers:
+        budget_accounts: Budget accounts
+    show:
+      actions:
+        add_category: Add Category
+      well:
+        budgeted:
+          income: Budgeted income
+          expense: Budgeted expense
+        actual:
+          income: Actual income
+          expense: Actual expense
+      tabs:
+        details: Details
+        progress: Progress
+      headers:
+        category: Category
+        budgeted: Budgeted
+        actual: Actual
+        difference: Difference

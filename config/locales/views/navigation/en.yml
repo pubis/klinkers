@@ -6,6 +6,7 @@ en:
       new: New
       list: List
     categories: Categories
+    budgets: Budgets
 
   sidebar:
     header:
