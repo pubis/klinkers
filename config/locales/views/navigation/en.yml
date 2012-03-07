@@ -1,12 +1,21 @@
 en:
   navbar:
-    my_economy: My economy
+    my_economy: My Economy
     accounts: Accounts
     accounts_menu:
-      new: New
-      list: List
+      new: New Account
+      listall: All Accounts
+      headers:
+        favorites: Favorite Accounts
     categories: Categories
+    categories_menu:
+      new: New Category
+      listall: All Categories
     budgets: Budgets
+    budgets_menu:
+      new: New Budget
+      headers:
+        active: Active Budget
 
   sidebar:
     header:

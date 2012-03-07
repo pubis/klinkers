@@ -3,10 +3,19 @@
     my_economy: Min ekonomi
     accounts: Konton
     accounts_menu:
-      new: Nytt
-      list: Lista
+      new: Nytt konto
+      listall: Alla konton
+      headers:
+        favorites: Favoritkonton
     categories: Kategorier
+    categories_menu:
+      new: Ny kategori
+      listall: Alla kategorier
     budgets: Budget
+    budgets_menu:
+      new: Ny budget
+      headers:
+        active: Aktiv budget
 
   sidebar:
     header:
