@@ -10,7 +10,8 @@
     favorites: Favoritkonton
     others: Övriga konton
   
-  date: Datum
+  headers:
+    date: Datum
   sum: Summa
   net_worth: Egenkapital
   balance: Saldo

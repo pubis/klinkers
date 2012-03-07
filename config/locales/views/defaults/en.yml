@@ -10,7 +10,8 @@ en:
     favorites: Favorite accounts
     others: Other accounts
   
-  date: Date
+  headers:
+    date: Date
   sum: Sum
   net_worth: Net worth
   balance: Balance
