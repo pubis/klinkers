@@ -6,9 +6,9 @@
 </div>
 <div class="tabbable">
 	<ul class="nav nav-tabs">
-	  <li class="active"><a href="#users" data-toggle="tab"><%= t('accounts.index.headers.users') %></a></li>
-	  <li><a href="#payees" data-toggle="tab"><%= t('accounts.index.headers.payees') %></a></li>
-	  <li><a href="#system" data-toggle="tab"><%= t('accounts.index.headers.system') %></a></li>
+	  <li class="active"><a href="#users" data-toggle="tab"><%= icon_tag(:user) + ' ' + t('accounts.index.headers.users') %></a></li>
+	  <li><a href="#payees" data-toggle="tab"><%= icon_tag(:'shopping-cart') + ' ' + t('accounts.index.headers.payees') %></a></li>
+	  <li><a href="#system" data-toggle="tab"><%= icon_tag(:cogs) + ' ' + t('accounts.index.headers.system') %></a></li>
 	</ul>
 	<div class="tab-content">
 		<div class="tab-pane active" id="users">
@@ -24,7 +24,7 @@
 				<tbody>
 					<% @accounts.users.order("favorite DESC").each do |account| %>
 					<tr>
-						<td><strong><%= link_to account.name, account %></strong> <%= '<i class="icon-star"></i>'.html_safe if account.favorite? %></td>
+						<td><strong><%= link_to account.name, account %></strong> <%= icon_tag :star if account.favorite? %></td>
 						<td class="right-align"><%= number_to_currency(account.balance, :locale => account.currency.locale) %></td>
 						<td>&nbsp;</td>
 						<td>
