@@ -20,8 +20,9 @@
 </div>
 <div class="actions">
 	<%= render :partial => "budget_category" %>
-	<button class="btn btn-small" data-toggle="modal" data-target="#new_budget_category">
-	  <%= t('budgets.show.actions.add_category') %>
+	<button class="btn" data-toggle="modal" data-target="#new_budget_category">
+		<%= icon_tag :plus %>
+		<%= t('budgets.show.actions.add_category') %>
 	</button>
 </div>
 <div class="well">
@@ -40,8 +41,8 @@
 </div>
 <div class="tabbable">
 	<ul class="nav nav-tabs">
-		<li class="active"><a href="#details" data-toggle="tab">Details</a></li>
-		<li><a href="#progress" data-toggle="tab">Progress</a></li>
+		<li class="active"><a href="#details" data-toggle="tab"><%= icon_tag :'th-list' %> <%= t('budgets.show.tabs.details').titleize %></a></li>
+		<li><a href="#progress" data-toggle="tab"><%= icon_tag :'align-left' %> <%= t('budgets.show.tabs.progress').titleize %></a></li>
 	</ul>
 	<div class="tab-content">
 		<div class="tab-pane active" id="details">
