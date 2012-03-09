@@ -1,9 +1,7 @@
 <%= content_for :sidebar do %>
 	<li class="nav-header"><%= t('categories.sidebar.headers.categories') %></li>
 	<li>
-		<% icn = '<i class="icon-pencil"></i>' %>
-		<% ttl = t('categories.sidebar.categories.new') %>
-		<%= link_to "#{icn} #{ttl}".html_safe, new_category_path %>
+		<%= link_to icon_tag(:pencil) + ' ' + t('categories.sidebar.categories.new'), new_category_path %>
 	</li>
 	<%= render "sidebar/shortcuts" %>
 <% end %>
@@ -34,10 +32,10 @@
 							<span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu">
-							<li><%= link_to "<i class=\"icon-edit\"></i> #{t('action.edit')}".html_safe, edit_category_path(category) %></li>
-							<li><%= link_to "<i class=\"icon-trash\"></i> #{t('action.delete')}".html_safe, category, :method => :delete, :confirm => "Are you sure?" %></li>
+							<li><%= link_to icon_tag(:edit) + ' ' + t('action.edit'), edit_category_path(category) %></li>
+							<li><%= link_to icon_tag(:trash) + ' ' + t('action.delete'), category, :method => :delete, :confirm => "Are you sure?" %></li>
 							<li class="divider"></li>
-							<li><%= link_to "<i class=\"icon-pencil\"></i> #{t('categories.action.new_child')}".html_safe, new_category_path(:parent => category.id) %></li>
+							<li><%= link_to icon_tag(:pencil) + ' ' + t('categories.action.new_child'), new_category_path(:parent => category.id) %></li>
 						</ul>
 					</div>
 				</td>
@@ -56,8 +54,8 @@
 							<span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu">
-							<li><%= link_to "<i class=\"icon-edit\"></i> #{t('action.edit')}".html_safe, edit_category_path(child) %></li>
-							<li><%= link_to "<i class=\"icon-trash\"></i> #{t('action.delete')}".html_safe, child, :method => :delete, :confirm => "Are you sure?" %></li>
+							<li><%= link_to icon_tag(:edit) + ' ' + t('action.edit'), edit_category_path(child) %></li>
+							<li><%= link_to icon_tag(:trash) + ' ' + t('action.delete'), child, :method => :delete, :confirm => "Are you sure?" %></li>
 						</ul>
 					</div>
 				</td>
