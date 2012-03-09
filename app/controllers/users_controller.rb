@@ -65,4 +65,14 @@ class UsersController < ApplicationController
       render "new"
     end
   end
+  
+  def update
+    @user = current_user
+    
+    if @user.update_attributes(params[:user])
+      redirect_to overview_path, notice: "Settings saved!"
+    else
+      render "new"
+    end
+  end
 end

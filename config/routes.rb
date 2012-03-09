@@ -9,6 +9,7 @@ Klinkers::Application.routes.draw do
   resources :users, except: [:index]
 
   match "overview" => "users#overview"
+  match "settings" => "users#edit"
 
   resources :accounts do
     resources :transactions

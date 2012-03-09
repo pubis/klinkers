@@ -7,5 +7,6 @@
         username: Användarnamn
         email: Epost
         password: Lösenord
+        name: Namn
         first_name: Förnamn
         last_name: Efternamn

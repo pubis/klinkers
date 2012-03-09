@@ -1,5 +1,5 @@
 <div class="page-header">
-	<h1 id="create_new_user">Create new user</h1>
+	<h1>User Settings</h1>
 </div>
 <%= form_for @user, :html => { :class => "form-horizontal" } do |f| %>
 <fieldset>
@@ -12,18 +12,18 @@
 	<div class="control-group">
 		<%= f.label :name, :class => "control-label" %>
 		<div class="controls">
-			<%= f.text_field :first_name, :class => "input-small", :placeholder => "First" %>
-			<%= f.text_field :last_name,  :class => "input-large", :placeholder => "Last" %>
+			<%= f.text_field :first_name, :class => "input-small", :placeholder => t('users.form.placeholders.first_name') %>
+			<%= f.text_field :last_name,  :class => "input-large", :placeholder => t('users.form.placeholders.last_name') %>
 		</div>
 	</div>
 	<div class="control-group">
-		<%= f.label :default_currency, :class => "control-label" %>
+		<%= f.label Currency.model_name.human, :class => "control-label" %>
 		<div class="controls">
-			<%= f.collection_select :default_currency, Currency.all, :id, :example %>
+			<%= f.collection_select :currency_id, Currency.all, :id, :name %>
 		</div>
 	</div>
 </fieldset>
 	<div class="form-actions">
-		<%= f.submit "Create user!", :class => "btn btn-primary" %>
+		<%= f.submit "Save settings", :class => "btn btn-primary" %>
 	</div>
 <% end %>
