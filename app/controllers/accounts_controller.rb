@@ -23,7 +23,6 @@ class AccountsController < ApplicationController
     if @account.save
       redirect_to @account, :notice => "Account succesfully created!"
     else
-      flash.now.alert "Could not create account!"
       render "new"
     end
   end
