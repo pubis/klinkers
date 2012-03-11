@@ -14,3 +14,6 @@
     overview:
       title: Min ekonomi
       top_expense_categories: Största utgiftskategorier
+      
+    new:
+      header: Skapa ny användare

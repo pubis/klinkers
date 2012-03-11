@@ -14,3 +14,6 @@ en:
     overview:
       title: My economy
       top_expense_categories: Top expense categories
+      
+    new:
+      header: Create new user
