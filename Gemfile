@@ -42,3 +42,5 @@ group :test do
   gem 'guard-spork'
   gem 'database_cleaner'
 end
+
+gem 'simple_form'
