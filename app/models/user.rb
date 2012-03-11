@@ -3,8 +3,12 @@ class User < ActiveRecord::Base
   
   store :settings, accessors: [:default_account, :default_payee, :language, :active_budget]
   
-  validates :username, :presence => true
-  validates :email, :presence => true
+  attr_accessible :username, :email, :first_name, :last_name, :language, :currency_id, :password, :password_confirmation
+  
+  email_regex = /@/ #Super simple
+  validates :username, presence: true, uniqueness: true, exclusion: { in: %w(admin root superuser moderator demo) }
+  validates :email, presence: true, uniqueness: true, format: { with: email_regex }
+  validates :password, on: :create, confirmation: true, presence: true
   
   belongs_to :currency
   
