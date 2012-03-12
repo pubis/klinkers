@@ -1,7 +1,7 @@
 "sv-SE":
   sessions:
     form:
-      legend_html: 'Logga in eller <a href="/signup">registrera dig</a>'
+      legend_html: 'Logga in eller <a href="/signup?lang=%{language}">registrera dig</a>'
       placeholder:
         username_or_email: Användarnamn eller epost
         password: Lösenord
