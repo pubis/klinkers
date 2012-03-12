@@ -1,19 +1,7 @@
 en:
   users:
-    form:
-      placeholders:
-        username: user
-        email: user@example.com
-        first_name: First
-        last_name: Last
-        password: Secrect
-        password_confirmation: Confirm
-      submit: Create user!
-      language: Language
-
     overview:
       title: My economy
       top_expense_categories: Top expense categories
-      
     new:
       header: Create new user

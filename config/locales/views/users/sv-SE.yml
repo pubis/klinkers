@@ -1,19 +1,7 @@
 "sv-SE":
   users:
-    form:
-      placeholders:
-        username: användare
-        email: anvandare@exempel.se
-        first_name: Förnamn
-        last_name: Efternamn
-        password: Hemligt
-        password_confirmation: Bekräfta
-      submit: Skapa användare!
-      language: Språk
-
     overview:
       title: Min ekonomi
       top_expense_categories: Största utgiftskategorier
-      
     new:
       header: Skapa ny användare

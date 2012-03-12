@@ -10,3 +10,18 @@
         name: Namn
         first_name: Förnamn
         last_name: Efternamn
+        language: Språk
+  simple_form:
+    placeholders:
+      user:
+        username: användare
+        email: användare@exempel.se
+        first_name: För
+        last_name: Efter
+        password: Hemligt
+        password_confirmation: Bekräfta
+  helpers:
+    submit:
+      user:
+        create: Skapa användare
+        update: Spara ändringar
