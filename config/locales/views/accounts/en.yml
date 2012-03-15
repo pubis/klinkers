@@ -7,8 +7,10 @@ en:
         settings: Settings
     settings:
       title: Account settings
+    index:
+      title: Accounts
     new:
-      header: Create new account
+      title: Create new account
     form:
       submit: Save
       types:
