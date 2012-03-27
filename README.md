@@ -13,7 +13,7 @@ A demo should be available at [klinkers.pubis.se][demo]. Just create a fake user
 
 ##I18n
 
-Written in bad Enlish and translated to Swedish, _är det inte underbart så säg!_
+Written in bad English and translated to Swedish, _är det inte underbart så säg!_
 
 ##Legal stuff
 
