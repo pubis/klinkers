@@ -46,8 +46,7 @@
 			<%= builder.label TransactionItem.human_attribute_name('amount'), :class => "control-label" %>
 			<div class="controls">
 				<div class="input-append">
-					<%= builder.text_field :amount %>
-					<span class="add-on"><%= t('number.currency.format.unit') %></span>
+					<%= builder.text_field :amount %><span class="add-on"><%= t('number.currency.format.unit') %></span>
 				</div>
 			</div>
 		</div>
