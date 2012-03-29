@@ -24,7 +24,7 @@
 			<% @months.each do |month| %>
 			<tr>
 				<td class="month"><%= month[:title] %></td>
-				<td class="amount"><%= number_to_currency month[:amount] %></td>
+				<td class="amount" data-amount="<%= month[:amount] %>"><%= number_to_currency month[:amount] %></td>
 			</tr>
 			<% end %>
 			</tbody>
@@ -45,7 +45,7 @@ $(function() {
       labels.push($(this).html());
   });
   $("#data td.amount").each(function () {
-      data.push(parseFloat($(this).html()));
+      data.push(parseFloat($(this).data('amount')));
   });
 
 	var bc = r.barchart(10, 10, 330, 120, [data]);
