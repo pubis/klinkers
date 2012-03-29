@@ -4,7 +4,7 @@ module TransactionsHelper
       "Multiple/Split"
     else
       if transaction.categories.any?
-        transaction.categories.first.display_name
+        link_to transaction.categories.first.display_name, transaction.categories.first
       else
         "No category"
       end

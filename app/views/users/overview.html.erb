@@ -80,7 +80,9 @@
 			<% @categories.each do |category| %>
 				<% sum += category.amount.abs %>
 				<tr>
-					<td class="cat_name" data-category="<%= category.id %>" data-raw="<%= category.display_name %>"><%= category.display_name %></td>
+					<td class="cat_name" data-category="<%= category.id %>" data-raw="<%= category.display_name %>">
+						<%= link_to category.display_name, category %>
+					</td>
 					<td class="right-align cat_amount" data-raw="<%= category.amount.abs %>"><%= number_to_currency category.amount.abs %></td>
 				</tr>
 			<% end %>
