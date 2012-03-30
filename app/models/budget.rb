@@ -53,9 +53,10 @@ class Budget < ActiveRecord::Base
     period = budget_periods.first
     if period.end_date < Date.today
       # Period has expired, so create next
+      next_period_start_date = period.start_date + interval.to_i.months
       period = budget_periods.create(
-        start_date: period.start_date + interval.to_i.months, 
-        end_date: period.end_date + interval.to_i.months
+        start_date: next_period_start_date, 
+        end_date: next_period_start_date.end_of_month
       )
     end
     period
