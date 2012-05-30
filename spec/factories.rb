@@ -3,6 +3,7 @@ FactoryGirl.define do
   factory :currency do
     sequence(:code) { |n| "C#{n}" }
     name { "Currency #{code}" }
+    locale "en"
   end
   
   factory :user do
