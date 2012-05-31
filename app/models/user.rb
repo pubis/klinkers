@@ -12,7 +12,9 @@ class User < ActiveRecord::Base
   
   belongs_to :currency
   
-  has_many :accounts, :dependent => :destroy
+  has_many :portfolios
+  has_many :payees
+  has_many :accounts
   has_many :budgets
   has_many :categories
   
