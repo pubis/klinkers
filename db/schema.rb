@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120223180635) do
+ActiveRecord::Schema.define(:version => 20120530191708) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(:version => 20120223180635) do
     t.string   "account_type", :default => "Account", :null => false
     t.text     "settings"
     t.integer  "currency_id"
+    t.string   "type"
   end
 
   add_index "accounts", ["account_type"], :name => "index_accounts_on_account_type"
@@ -32,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20120223180635) do
   add_index "accounts", ["favorite"], :name => "index_accounts_on_favorite"
   add_index "accounts", ["payee"], :name => "index_accounts_on_payee"
   add_index "accounts", ["system"], :name => "index_accounts_on_system"
+  add_index "accounts", ["type"], :name => "index_accounts_on_type"
   add_index "accounts", ["user_id"], :name => "index_accounts_on_user_id"
 
   create_table "budget_accounts", :force => true do |t|
@@ -103,6 +105,16 @@ ActiveRecord::Schema.define(:version => 20120223180635) do
 
   add_index "currencies", ["code"], :name => "index_currencies_on_code"
   add_index "currencies", ["name"], :name => "index_currencies_on_name"
+
+  create_table "stocks", :force => true do |t|
+    t.string   "symbol"
+    t.string   "name"
+    t.string   "market"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "stocks", ["symbol"], :name => "index_stocks_on_symbol"
 
   create_table "transaction_items", :force => true do |t|
     t.integer  "account_id",                                   :null => false
