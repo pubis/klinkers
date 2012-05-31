@@ -34,8 +34,6 @@ class Account < ActiveRecord::Base
   # Scopes
   scope :favorites, where(favorite: true)
   scope :no_favorites, where(favorite: false)
-  scope :payees, where(payee: true)
-  scope :no_payees, where(payee: false)
   scope :systems, where(system: true)
   scope :no_systems, where(system: false)
   scope :users, where(payee: false, system: false)
