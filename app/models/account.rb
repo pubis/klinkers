@@ -82,10 +82,27 @@ class Account < ActiveRecord::Base
       transaction.save
     end
   end
-  
+
   def set_user_currency
     if self.currency.nil?
       self.currency = self.user.currency
     end
+  end
+
+  # Some STI hacks and tricks
+
+  # Allow childred to use parents route
+  def self.inherited(child)
+    child.instance_eval do
+      def model_name
+        Account.model_name
+      end
+    end
+    super
+  end
+
+  # Helper to create select options for each child class currently loaded
+  def self.select_options
+    ["Account"] + descendants.map{ |c| c.to_s }.sort
   end
 end
