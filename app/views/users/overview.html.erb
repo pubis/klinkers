@@ -62,6 +62,25 @@
 				</tr>
 			</tfoot>
 		</table>
+
+		<h2><%= t('accounts.portfolios') %></h2>
+		<table class="table table-striped">
+			<thead>
+			<tr>
+				<th><%= Portfolio.model_name.human %></th>
+				<th class="right-align"><%= t('value') %></th>
+			</tr>
+			</thead>
+			<tbody>
+				<% others = 0.0 %>
+				<% @portfolios.each do |portfolio| %>
+				<tr>
+					<td><%= portfolio.name %></td>
+					<td class="right-align"><%= number_to_currency(portfolio.balance, :locale => portfolio.currency.locale) %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
 	</div>
 	<div class="span6">
 		<section id="spending_by_category">

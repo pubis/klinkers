@@ -27,7 +27,7 @@
 		<div class="control-group" id="payee">
 			<%= builder.label TransactionItem.human_attribute_name('payee'), :class => "control-label" %>
 			<div class="controls">
-				<%= builder.text_field :payee, :data => {:provide => "typeahead", :items => 4, :source => current_user.accounts.payees.pluck(:name)} %>
+				<%= builder.text_field :payee, :data => {:provide => "typeahead", :items => 4, :source => current_user.payees.pluck(:name)} %>
 			</div>
 		</div>
 		<div class="control-group hide" id="account">

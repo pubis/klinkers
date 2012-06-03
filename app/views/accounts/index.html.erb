@@ -46,7 +46,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<% @accounts.payees.order("favorite DESC, name ASC").each do |account| %>
+					<% current_user.payees.order("favorite DESC, name ASC").each do |account| %>
 					<tr>
 						<td><strong><%= link_to account.name, account %></strong> <%= '<i class="icon-star"></i>'.html_safe if account.favorite? %></td>
 						<td class="right-align"><%= number_to_currency(account.balance, :locale => account.currency.locale) %></td>
