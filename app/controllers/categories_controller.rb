@@ -6,29 +6,16 @@ class CategoriesController < ApplicationController
   
   def show
     @accounts = current_user.accounts.users.no_payees
-    account_ids = params[:accounts] || @accounts.map { |a| a.id }
-
-    start_date = Date.today.beginning_of_year
 
     @months = []
+    start_date = Date.today.beginning_of_year
+
     while start_date <= Date.today
-      item = TransactionItem.all(
-        :select => "SUM(transaction_items.amount) AS amount",
-        :joins => ["LEFT JOIN transactions ON (transactions.id = transaction_items.transaction_id)"],
-        :conditions => [
-          "transaction_items.account_id IN (?) AND transaction_items.category_id = ? AND transactions.operation_date >= ? AND transactions.operation_date <= ?",
-          account_ids,
-          params[:id],
-          start_date,
-          start_date.end_of_month
-        ],
-        :group => "transaction_items.category_id"
-      ).first
       @months << {
         title: "#{Date::MONTHNAMES[start_date.month].titleize} #{start_date.year}",
         start_date: start_date,
         end_date: start_date.end_of_month,
-        amount: item.nil? ? 0.0 : item.amount.abs
+        amount: @category.spending_for_period(@accounts, start_date, start_date.end_of_month)
       }
       start_date += 1.month
     end
