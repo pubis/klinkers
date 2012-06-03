@@ -37,7 +37,7 @@ class Category < ActiveRecord::Base
     end
   end
   
-  def spending_for_period(*accounts, start_date, end_date)
+  def spending_for_period(accounts, start_date, end_date)
     item = TransactionItem.all(
       :select => "SUM(transaction_items.amount) AS amount",
       :joins => ["LEFT JOIN transactions ON (transactions.id = transaction_items.transaction_id)"],
@@ -50,6 +50,10 @@ class Category < ActiveRecord::Base
       ],
       :group => "transaction_items.category_id"
     ).first
-    item.amount.abs || 0.0
+    if item && item.amount
+      item.amount.abs
+    else
+      0.0
+    end
   end
 end
