@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       redirect_to login_path
     end
     
-    @accounts = current_user.accounts.users.no_payees
+    @accounts = current_user.accounts.users
     
     account_ids = params[:accounts] || @accounts.map { |a| a.id }
 
@@ -54,6 +54,8 @@ class UsersController < ApplicationController
       }
       sd += 1.month
     end
+
+    @portfolios = current_user.portfolios
   end
   
   def create

@@ -5,7 +5,8 @@ class CategoriesController < ApplicationController
   end
   
   def show
-    @accounts = current_user.accounts.users.no_payees
+    @accounts = current_user.accounts.users
+    account_ids = params[:accounts] || @accounts.map { |a| a.id }
 
     @months = []
     start_date = Date.today.beginning_of_year
