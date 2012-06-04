@@ -6,9 +6,9 @@
 	</div>
 	<div class="modal-body">
 		<div class="control-group">
-			<%= f.label :event, :class => "control-label" %>
+			<%= f.label :type, :class => "control-label" %>
 			<div class="controls">
-				<%= f.select :event, ["Withdrawal", "Deposit", "Transfer"] %>
+				<%= f.select :type, Transaction.select_options %>
 			</div>
 		</div>
 		<div class="control-group">
@@ -17,40 +17,32 @@
 				<%= f.date_select :operation_date %>
 			</div>
 		</div>
-		<%= f.fields_for :transaction_items do |builder| %>
 		<div class="control-group">
-	    	<%= builder.label TransactionItem.human_attribute_name('category'), :class => "control-label" %>
+	    	<%= f.label :category, :class => "control-label" %>
 			<div class="controls">
-				<%= builder.collection_select :category_id, Category.order('expense DESC').all, :id, :display_name, :include_blank => true %>
+				<%= f.collection_select :category_id, Category.order('expense DESC').all, :id, :display_name, :include_blank => true %>
 			</div>
 		</div>
-		<div class="control-group" id="payee">
-			<%= builder.label TransactionItem.human_attribute_name('payee'), :class => "control-label" %>
+		<div class="control-group" id="account">
+			<%= f.label :account, :class => "control-label" %>
 			<div class="controls">
-				<%= builder.text_field :payee, :data => {:provide => "typeahead", :items => 4, :source => current_user.payees.pluck(:name)} %>
-			</div>
-		</div>
-		<div class="control-group hide" id="account">
-			<%= builder.label TransactionItem.human_attribute_name('account'), :class => "control-label" %>
-			<div class="controls">
-				<%= builder.text_field :to_account, :data => {:provide => "typeahead", :items => 4, :source => current_user.accounts.users.pluck(:name)} %>
+				<%= f.text_field :account, :data => {:provide => "typeahead", :items => 4, :source => current_user.accounts.pluck(:name)} %>
 			</div>
 		</div>
 		<div class="control-group">
-			<%= builder.label TransactionItem.human_attribute_name('memo'), :class => "control-label" %>
+			<%= f.label :memo, :class => "control-label" %>
 			<div class="controls">
-				<%= builder.text_field :memo %>
+				<%= f.text_field :memo %>
 			</div>
 		</div>
 		<div class="control-group">
-			<%= builder.label TransactionItem.human_attribute_name('amount'), :class => "control-label" %>
+			<%= f.label :amount, :class => "control-label" %>
 			<div class="controls">
 				<div class="input-append">
-					<%= builder.text_field :amount %><span class="add-on"><%= t('number.currency.format.unit') %></span>
+					<%= f.text_field :amount %><span class="add-on"><%= t('number.currency.format.unit') %></span>
 				</div>
 			</div>
 		</div>
-		<% end %>
 	</div>
 	<div class="modal-footer">
 		<%= f.submit t('transactions.form.submit'), :class => "btn btn-primary" %>

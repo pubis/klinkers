@@ -47,9 +47,9 @@
 			<!-- Icon -->
 			<td rowspan="2" width="32px" height="32px">&nbsp;</td>
 			<!-- Date -->
-			<td><%= link_to t.operation_date, edit_account_transaction_path(@account, t) %></td>
+			<td><%= link_to t.operation_date, [@account, t] %></td>
 			<!-- Type -->
-			<td><%= t.event %></td>
+			<td><%= t.type %></td>
 			<!-- Payee/Account -->
 			<td colspan="2"><strong><%= transaction_payee(t, @account) %></strong></td>
 			<!-- Withdrawal -->
