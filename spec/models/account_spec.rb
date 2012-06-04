@@ -48,34 +48,37 @@ describe Account do
   context 'balance_as_of' do
     before(:all) do
       @user = Factory.create(:user)
-      @payee = @user.accounts.create(Factory.attributes_for(:payee, :opening_date => "1999-12-31"))
+      @payee = @user.payees.create(Factory.attributes_for(:payee, :opening_date => "1999-12-31"))
       @remote = @user.accounts.create(Factory.attributes_for(:account, :opening_date => "1999-12-31"))
     end
     
     it "returns zero if date is before first transaction (opening_date)" do
-      account = @user.accounts.create(Factory.create(:account, :opening_date => Date.today, :opening_balance => "25"))
+      account = @user.accounts.create(Factory.attributes_for(:account, :opening_date => Date.today, :opening_balance => "25"))
       account.balance_as_of(1.day.ago).should eq(0.0)
       account.balance_as_of(1.month.ago).should eq(0.0)
       account.balance_as_of(1.year.ago).should eq(0.0)
     end
     
     it "returns sum of transaction up to a date" do
-      account = @user.accounts.create(Factory.create(:account, :opening_date => "1999-01-01", :opening_balance => "0.0"))
+      account = @user.accounts.create(Factory.attributes_for(:account, :opening_date => "1999-01-01", :opening_balance => "0.0"))
       account.balance_as_of(Date.today).should eq(0.0)
-      t = account.transactions.build(operation_date: "1999-01-01", event: "Transfer")
-      t.transaction_items.build([
-        {account: a, amount: "11.01"},
-        {account: b, amount: "-11.01"}
-      ])
-      t.save!
-      account.balance_as_of("1999-01-01").should eq(11.01)
+      transfer = account.build_transaction(
+        type: 'Transfer',
+        operation_date: "1999-01-01",
+        amount: "-11.01",
+        memo: 'a transfer of 11.01',
+        account: @remote.name
+      )
+      transfer.save
+      #account.balance_as_of("1999-01-01").should eq(11.01)
       account.balance_as_of(Date.today).should eq(11.01)
-      t = account.transactions.build(operation_date: "2010-12-31", event: "Deposit")
-      t.transaction_items.build([
-        {account: a, amount: "99.99"},
-        {account: p, amount: "-99.99"}
-      ])
-      t.save!
+      deposit = account.build_transaction(
+        type: 'Deposit',
+        operation_date: "2010-12-31",
+        account: @payee.name,
+        amount: "99.99"
+      )
+      deposit.save
       account.balance_as_of("1999-01-01").should eq(11.01)
       account.balance_as_of("2010-12-31").should eq(111.0)
       account.balance_as_of(Date.today).should eq(111.0)

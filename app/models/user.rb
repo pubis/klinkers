@@ -40,8 +40,8 @@ class User < ActiveRecord::Base
 
   private
   def build_system_accounts
-    self.accounts.build(name: 'Opening balances', system: true, payee: true)
-    self.accounts.build(name: 'Taxes', system: true, payee: true)
+    self.payees.build(name: 'Opening balances', system: true)
+    self.payees.build(name: 'Taxes', system: true)
     self.save
   end
 end

@@ -19,8 +19,8 @@ FactoryGirl.define do
     sequence(:name) { |n| "foo#{n}" }
   end
   
-  factory :payee, :parent => :account do
-    payee true
-    name { "#{name} payee"}
+  factory :payee do
+    user
+    sequence(:name) { |n| "#{n} payee" }
   end
 end

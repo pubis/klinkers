@@ -64,13 +64,13 @@ class Account < ActiveRecord::Base
   
   def create_opening_transaction
     # Skip for system accounts and payees
-    unless self.system || self.payee
+    unless self.system || self.type == 'Payee'
       # Defaults
       self.opening_balance ||= "0.0"
       self.opening_date ||= Time.zone.today
 
       # Find system account
-      opening_balance_account = self.user.accounts.systems.where(:name => "Opening balances").first
+      opening_balance_account = self.user.payees.systems.where(:name => "Opening balances").first
 
       # Deposit or withdrawal?
       if self.opening_balance.to_d >= 0
