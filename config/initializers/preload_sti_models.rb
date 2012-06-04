@@ -4,7 +4,8 @@ if Rails.env.development?
     require_dependency File.join("app","models", "account","#{c}.rb")
   end
 
+  # Transaction children
   %w[transfer withdrawal deposit].each do |c|
-    require_dependency File.join("app","models","#{c}.rb")
+    require_dependency File.join("app","models", "transaction","#{c}.rb")
   end
 end
