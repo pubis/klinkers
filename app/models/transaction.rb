@@ -1,6 +1,7 @@
 class Transaction < ActiveRecord::Base
-  validates :event, :presence => true
   validates :operation_date, :presence => true
+
+  attr_accessor :category_id, :account, :memo, :amount
 
   has_many :transaction_items
   accepts_nested_attributes_for :transaction_items
@@ -40,5 +41,41 @@ class Transaction < ActiveRecord::Base
   
   def remote_accounts(account)
     accounts.uniq - [account]
+  end
+  
+  def build_items(user, account, opts = {})
+    transaction_items.new(
+      category_id: opts[:category_id], 
+      account_id: find_or_create_account(user, opts[:account]).id, 
+      amount: opts[:amount], 
+      memo: opts[:memo]
+    )
+    transaction_items.new(
+      category_id: opts[:category_id], 
+      account_id: account.id, 
+      amount: opts[:amount].to_d * -1, 
+      memo: opts[:memo]
+    )
+  end
+
+  def find_or_create_account(u, a)
+    # Find the id of the supplied account or create new if none exists
+    account_name = a.blank? ? "Anonymous Payee" : a
+    account = u.payees.where(name: account_name).first_or_create!(opening_balance: 0)
+  end
+
+  # Allow childred to use parents route
+  def self.inherited(child)
+    child.instance_eval do
+      def model_name
+        Transaction.model_name
+      end
+    end
+    super
+  end
+
+  # Helper to create select options for each child class currently loaded
+  def self.select_options
+    descendants.map{ |c| c.to_s }.sort
   end
 end

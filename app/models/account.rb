@@ -53,6 +53,13 @@ class Account < ActiveRecord::Base
     transaction_items.joins(:transaction).where("transactions.operation_date < ?", date).sum(:amount)
   end
 
+  def build_transaction(opts = {})
+    class_name = opts[:type].constantize
+    transaction = class_name.create(opts.except(:type))
+    transaction.build_items(user, self, opts)
+    transaction
+  end
+
   private
   
   def create_opening_transaction
@@ -67,9 +74,9 @@ class Account < ActiveRecord::Base
 
       # Deposit or withdrawal?
       if self.opening_balance.to_d >= 0
-        transaction = Transaction.new(:event => 'Deposit', :operation_date => self.opening_date)
+        transaction = Deposit.new(:operation_date => self.opening_date)
       else
-        transaction = Transaction.new(:event => 'Withdrawal', :operation_date => self.opening_date)
+        transaction = Withdrawal.new(:operation_date => self.opening_date)
       end
 
       # Build items and save
