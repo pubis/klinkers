@@ -1,3 +1,2 @@
 class CreditCard < Account
-  
 end

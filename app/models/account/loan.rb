@@ -1,3 +1,2 @@
 class Loan < Account
-  
 end
