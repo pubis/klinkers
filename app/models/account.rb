@@ -36,7 +36,7 @@ class Account < ActiveRecord::Base
   scope :no_favorites, where(favorite: false)
   scope :systems, where(system: true)
   scope :no_systems, where(system: false)
-  scope :users, where(payee: false, system: false)
+  scope :users, where("type != 'Payee'", system: false)
 
   def balance
     @balance_cache ||= transaction_items.sum(:amount)

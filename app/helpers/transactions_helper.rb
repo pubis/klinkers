@@ -13,10 +13,10 @@ module TransactionsHelper
 
   def transaction_payee(transaction, account)
     remote = transaction.remote_accounts(account).first
-    if remote && !remote.payee
+    if remote && remote.type != 'Payee'
       link_to remote.name, remote
     else
-      if remote.payee
+      if remote.type == 'Payee'
         remote.name
       else
         "-"
