@@ -12,17 +12,6 @@
 <% end %>
 <fieldset>
 	<div class="control-group">
-		<%= f.label :account_type, :class => "control-label" %>
-		<div class="controls">
-			<%= f.select :account_type, [
-					[t('accounts.types.account'), 'account'], 
-					[t('accounts.types.creditcard'), 'creditcard'], 
-					[t('accounts.types.loan'), 'loan'], 
-					[t('accounts.types.portfolio'), 'portfolio']
-				], {}, :class => "input-xlarge" %>
-		</div>
-	</div>
-	<div class="control-group">
 		<%= f.label :type, :class => "control-label" %>
 		<div class="controls">
 			<%= f.select :type, Account.select_options, {}, :class => "input-xlarge" %>

@@ -1,5 +1,5 @@
 class AccountsController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource :except => [:create]
   
   def index
   end
@@ -18,7 +18,9 @@ class AccountsController < ApplicationController
   end
   
   def create
-    @account = current_user.accounts.new(params[:account])
+    class_name = params[:account][:type].constantize
+    @account = class_name.new(params[:account].except(:type))
+    @account.user = current_user
     
     if @account.save
       redirect_to @account, :notice => "Account succesfully created!"
