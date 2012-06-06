@@ -13,6 +13,7 @@ class UsersController < ApplicationController
     end
     
     @accounts = current_user.accounts.users
+    redirect_to new_account_path, :notice => "You will need atleast one account." unless @accounts.any?
     
     account_ids = params[:accounts] || @accounts.map { |a| a.id }
 
