@@ -11,25 +11,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120604121557) do
+ActiveRecord::Schema.define(:version => 20120303214220) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
-    t.string   "name",                           :null => false
-    t.string   "number",      :default => "",    :null => false
-    t.boolean  "system",      :default => false, :null => false
-    t.boolean  "favorite",    :default => false, :null => false
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
+    t.string   "name",                                :null => false
+    t.string   "number",       :default => "",        :null => false
+    t.boolean  "system",       :default => false,     :null => false
+    t.boolean  "favorite",     :default => false,     :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
     t.text     "settings"
     t.integer  "currency_id"
-    t.string   "type"
+    t.boolean  "payee",        :default => false,     :null => false
+    t.string   "account_type", :default => "Account", :null => false
   end
 
+  add_index "accounts", ["account_type"], :name => "index_accounts_on_account_type"
   add_index "accounts", ["currency_id"], :name => "index_accounts_on_currency_id"
   add_index "accounts", ["favorite"], :name => "index_accounts_on_favorite"
+  add_index "accounts", ["payee"], :name => "index_accounts_on_payee"
   add_index "accounts", ["system"], :name => "index_accounts_on_system"
-  add_index "accounts", ["type"], :name => "index_accounts_on_type"
   add_index "accounts", ["user_id"], :name => "index_accounts_on_user_id"
 
   create_table "budget_accounts", :force => true do |t|
@@ -130,11 +132,10 @@ ActiveRecord::Schema.define(:version => 20120604121557) do
     t.date     "operation_date", :null => false
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
-    t.string   "type"
+    t.string   "event",          :null => false
   end
 
   add_index "transactions", ["operation_date"], :name => "index_transactions_on_operation_date"
-  add_index "transactions", ["type"], :name => "index_transactions_on_type"
 
   create_table "users", :force => true do |t|
     t.string   "username",        :null => false
