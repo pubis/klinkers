@@ -96,13 +96,19 @@ class Account < ActiveRecord::Base
 
   # Some STI hacks and tricks
 
-  # Allow childred to use parents route
   def self.inherited(child)
+    # Allow childred to use parents route
     child.instance_eval do
       def model_name
         Account.model_name
       end
     end
+
+    # Hack to make children handle virtual date-attribute correctly
+    child.class_eval do
+      columns_hash["opening_date"] = ActiveRecord::ConnectionAdapters::Column.new("opening_date", nil, "date")
+    end
+
     super
   end
 
