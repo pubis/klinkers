@@ -70,7 +70,7 @@ describe Account do
         account: @remote.name
       )
       transfer.save
-      #account.balance_as_of("1999-01-01").should eq(11.01)
+      account.balance_as_of("1999-01-01").should eq(11.01)
       account.balance_as_of(Date.today).should eq(11.01)
       deposit = account.build_transaction(
         type: 'Deposit',

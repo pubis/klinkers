@@ -50,7 +50,7 @@ class Account < ActiveRecord::Base
   end
   
   def balance_as_of(date)
-    transaction_items.joins(:transaction).where("transactions.operation_date < ?", date).sum(:amount)
+    transaction_items.joins(:transaction).where("transactions.operation_date <= ?", date).sum(:amount)
   end
 
   def build_transaction(opts = {})
