@@ -102,16 +102,6 @@ ActiveRecord::Schema.define(:version => 20120604121557) do
   add_index "currencies", ["code"], :name => "index_currencies_on_code"
   add_index "currencies", ["name"], :name => "index_currencies_on_name"
 
-  create_table "stocks", :force => true do |t|
-    t.string   "symbol"
-    t.string   "name"
-    t.string   "market"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "stocks", ["symbol"], :name => "index_stocks_on_symbol"
-
   create_table "transaction_items", :force => true do |t|
     t.integer  "account_id",                                   :null => false
     t.integer  "transaction_id",                               :null => false
