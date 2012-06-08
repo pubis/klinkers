@@ -23,4 +23,10 @@ FactoryGirl.define do
     user
     sequence(:name) { |n| "#{n} payee" }
   end
+
+  factory :credit_card do
+    user
+    sequence(:name) { |n| "CreditCard #{n}" }
+    credit_limit 50_000
+  end
 end
