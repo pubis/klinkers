@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Create a database.yml
 echo "Setting up database.yml"
 cp config/database.yml.example config/database.yml
