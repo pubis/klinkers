@@ -41,6 +41,9 @@ group :test do
   gem 'guard-rspec'
   gem 'guard-spork'
   gem 'database_cleaner'
+
+  # Required by travis-ci
+  gem 'rake'
 end
 
 gem 'simple_form'
