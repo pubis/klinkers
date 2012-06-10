@@ -2,6 +2,8 @@
 
 Klinkers is a personal finance application written in Ruby on Rails.
 
+[![Build Status](https://secure.travis-ci.org/pubis/klinkers.png?branch=master)](http://travis-ci.org/pubis/klinkers)
+
 ##WIP
 
 Currently Klinkers support some basic accounting where you can create accounts and transfer money and make payments/deposits to them. It supports split transactions but the UI for that isn't realy implemented yet.
