@@ -3,7 +3,7 @@ require 'spec_helper'
 describe User do
   context 'when first created' do
     before(:all) do
-      @user = Factory.create(:user)
+      @user = FactoryGirl.create(:user)
     end
     
     it 'gets persisted' do
@@ -22,9 +22,9 @@ describe User do
   
   context "net_worth" do
     it "should update when adding an account" do
-      user = Factory.create(:user)
+      user = FactoryGirl.create(:user)
       user.net_worth.should eq(0.0)
-      account = Factory.create(:account, :user => user, :opening_balance => "123.50")
+      account = FactoryGirl.create(:account, :user => user, :opening_balance => "123.50")
       user.net_worth.should eq(123.50)
     end
   end
