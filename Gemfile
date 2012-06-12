@@ -44,6 +44,8 @@ group :test do
 
   # Required by travis-ci
   gem 'rake'
+  gem 'turnip'
+  gem 'capybara'
 end
 
 gem 'simple_form'
