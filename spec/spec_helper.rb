@@ -47,6 +47,7 @@ Spork.prefork do
     config.include FormSteps
     config.include ContentSteps
     config.include CurrencySteps
+    config.include UserSteps
   end
 end
 
