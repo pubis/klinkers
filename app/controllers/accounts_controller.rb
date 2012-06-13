@@ -23,7 +23,7 @@ class AccountsController < ApplicationController
     @account.user = current_user
     
     if @account.save
-      redirect_to @account, :notice => "Account succesfully created!"
+      redirect_to @account, :notice => "#{params[:account][:type]} created!"
     else
       render "new"
     end
