@@ -3,6 +3,10 @@ module NavigationSteps
     visit "/"
   end
 
+  step "I am on the overview" do
+    visit "/overview"
+  end
+
   step "I click :button" do |button|
     click_on button
   end

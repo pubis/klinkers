@@ -17,6 +17,13 @@ module UserSteps
     u = FactoryGirl.create(:user, :username => user, :email => email, :password => password)
     FactoryGirl.create(:account, :user => u)
   end
-end
 
+  step "I am logged in as a user" do
+    user = FactoryGirl.create(:user)
+    visit login_path
+    fill_in "username_or_email", with: user.username
+    fill_in "password", with: user.password
+    click_on "Log in"
+  end
+end
 RSpec.configure { |c| c.include UserSteps }

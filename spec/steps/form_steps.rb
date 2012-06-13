@@ -3,10 +3,9 @@ module FormSteps
     fill_in field, :with => value
   end
   
-  step "I select :option as :select" do |option, select|
+  step "I select/choose :option as :select" do |option, select|
     select(option, :from => select)
   end
 end
-
 
 RSpec.configure { |c| c.include FormSteps }
