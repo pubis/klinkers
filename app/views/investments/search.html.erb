@@ -8,9 +8,36 @@
 <div class="row-fluid">
 	<div class="span12">
 		<form class="well form-inline">
-			<input type="text" placeholder="Symbol" name="symbol">
-			<input type="text" placeholder="Name" name="name">
-			<input type="submit" value="Search" class="btn">
+			<fieldset>
+				<input type="text" placeholder="Company name" name="q">
+				<input type="submit" value="Search" class="btn">
+			</fieldset>
 		</form>
 	</div>
 </div>
+<% if @symbols.any? %>
+<div class="row-fluid">
+	<div class="span12">
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>Symbol</th>
+					<th>Name</th>
+					<th>Last trade</th>
+					<th>Exchange</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @symbols.each do |symbol| %>
+				<tr>
+					<td><%= symbol[:symbol] %></td>
+					<td><%= symbol[:name] %></td>
+					<td><%= symbol[:last_trade] %></td>
+					<td><%= symbol[:exchange] %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</div>
+<% end %>
