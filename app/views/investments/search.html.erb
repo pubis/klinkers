@@ -1,0 +1,16 @@
+<%= content_for :sidebar do %>
+	<%= render :partial => "sidebar/accounts" %>
+<% end %>
+<% title "Add investments : #{@portfolio.name}" %>
+<div class="page-header">
+	<h1 id="portfolio_name">Add investments</h1>
+</div>
+<div class="row-fluid">
+	<div class="span12">
+		<form class="well form-inline">
+			<input type="text" placeholder="Symbol" name="symbol">
+			<input type="text" placeholder="Name" name="name">
+			<input type="submit" value="Search" class="btn">
+		</form>
+	</div>
+</div>

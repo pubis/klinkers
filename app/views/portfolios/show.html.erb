@@ -1,2 +1,21 @@
-<h1>Portfolios#show</h1>
-<p>Find me in app/views/portfolios/show.html.erb</p>
+<%= content_for :sidebar do %>
+<li class="nav-header"><%= t('portfolio.sidebar.headers.portfolio') %></li>
+	<li>
+		<% icn = '<i class="icon-edit"></i>' %>
+		<% ttl = t('portfolios.sidebar.portfolio.settings') %>
+		<%= link_to "#{icn} #{ttl}".html_safe, edit_account_path(@portfolio) %>
+	</li>
+	<li>
+		<% icn = '<i class="icon-plus"></i>' %>
+		<% ttl = t('portfolios.sidebar.portfolio.add_investments') %>
+		<%= link_to "#{icn} #{ttl}".html_safe, search_portfolio_investments_path(@portfolio) %>
+	</li>
+<%= render :partial => "sidebar/accounts" %>
+<% end %>
+<% title @portfolio.name %>
+<div class="page-header">
+	<h1 id="portfolio_name"><%= yield(:title) %></h1>
+</div>
+<div class="actions">
+</div>
+<h2>Yum</h2>

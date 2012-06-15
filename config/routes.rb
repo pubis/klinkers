@@ -14,8 +14,14 @@ Klinkers::Application.routes.draw do
   resources :accounts do
     resources :transactions
   end
-  resources :portfolios, only: [:index, :show]
-  
+  resources :portfolios, only: [:index, :show] do
+    resource :investments do
+      collection do
+        get "search" => 'investments#search', :as => 'search'
+      end
+    end
+  end
+
   resources :budgets do
     resources :budget_categories
   end

@@ -1,4 +1,4 @@
 class Portfolio < Account
-  #Hello i'm a portfolio!?
-  
+  has_many :portfolio_investments
+  has_many :investments, through: :portfolio_investments
 end

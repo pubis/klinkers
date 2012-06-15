@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120604121557) do
+ActiveRecord::Schema.define(:version => 20120615114517) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -101,6 +101,33 @@ ActiveRecord::Schema.define(:version => 20120604121557) do
 
   add_index "currencies", ["code"], :name => "index_currencies_on_code"
   add_index "currencies", ["name"], :name => "index_currencies_on_name"
+
+  create_table "investments", :force => true do |t|
+    t.string   "name"
+    t.string   "symbol"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "portfolio_investments", :force => true do |t|
+    t.integer  "portfolio_id"
+    t.integer  "investment_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "portfolio_investments", ["investment_id"], :name => "index_portfolio_investments_on_investment_id"
+  add_index "portfolio_investments", ["portfolio_id"], :name => "index_portfolio_investments_on_portfolio_id"
+
+  create_table "stocks", :force => true do |t|
+    t.string   "symbol"
+    t.string   "name"
+    t.string   "market"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "stocks", ["symbol"], :name => "index_stocks_on_symbol"
 
   create_table "transaction_items", :force => true do |t|
     t.integer  "account_id",                                   :null => false
