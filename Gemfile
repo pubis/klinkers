@@ -31,6 +31,8 @@ gem 'will_paginate', '~> 3.0'
 
 gem 'http_accept_language'
 
+gem 'nas-yahoo_stock'
+
 gem 'rspec-rails', :group => [:test, :development]
 
 group :test do
