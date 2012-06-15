@@ -1,5 +1,5 @@
 class CreditCard < Account
   def available
-    return balance + credit_limit
+    balance + credit_limit.to_s.to_d
   end
 end
