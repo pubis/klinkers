@@ -25,6 +25,7 @@
 					<th>Name</th>
 					<th>Last trade</th>
 					<th>Exchange</th>
+					<th>&nbsp;</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -34,6 +35,7 @@
 					<td><%= symbol[:name] %></td>
 					<td><%= symbol[:last_trade] %></td>
 					<td><%= symbol[:exchange] %></td>
+					<td><%= link_to 'Add', add_investment_portfolio_path(@portfolio, :symbol => symbol[:symbol]) %></td>
 				</tr>
 				<% end %>
 			</tbody>

@@ -18,4 +18,26 @@
 </div>
 <div class="actions">
 </div>
-<h2>Yum</h2>
+<% if @portfolio.investments.any? %>
+<div class="row-fluid">
+	<div class="span12">
+		<h2>Investments</h2>
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>Symbol</th>
+					<th>Name</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @portfolio.investments.each do |investment| %>
+				<tr>
+					<td><%= investment.symbol %></td>
+					<td><%= investment.name %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</div>
+<% end %>
