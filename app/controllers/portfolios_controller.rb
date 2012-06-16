@@ -5,6 +5,7 @@ class PortfoliosController < ApplicationController
 
   def show
     @portfolio = current_user.portfolios.find(params[:id])
+    @portfolio.load_investments!
   end
 
   def add_investment

@@ -27,6 +27,7 @@
 				<tr>
 					<th>Symbol</th>
 					<th>Name</th>
+					<th>Last price</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -34,6 +35,7 @@
 				<tr>
 					<td><%= investment.symbol %></td>
 					<td><%= investment.name %></td>
+					<td><%= investment.quote[:last_trade_price_only] %></td>
 				</tr>
 				<% end %>
 			</tbody>

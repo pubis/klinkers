@@ -3,4 +3,6 @@ class Investment < ActiveRecord::Base
 
   validates :name, presence: true
   validates :symbol, presence: true, uniqueness: true
+
+  attr_accessor :quote
 end
