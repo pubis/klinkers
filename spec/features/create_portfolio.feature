@@ -3,7 +3,7 @@ Feature: Create a new portfolio
 		Given I am logged in as a user
 
 	Scenario:
-		When I go to "/accounts/new"
+		When I go to "the new account page"
 		And I choose "Portfolio" as "Type"
 		And I fill in "Name" with "StocksAndStuff"
 		And I fill in "Opening balance" with "25000"
