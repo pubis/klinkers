@@ -3,3 +3,6 @@ module ContentSteps
     page.should have_content(content)
   end
 end
+
+
+RSpec.configure { |c| c.include ContentSteps }

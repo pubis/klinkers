@@ -3,3 +3,6 @@ module CurrencySteps
     FactoryGirl.create(:currency, :name => name)
   end
 end
+
+
+RSpec.configure { |c| c.include CurrencySteps }

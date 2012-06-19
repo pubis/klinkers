@@ -11,3 +11,5 @@ module NavigationSteps
     visit path_to(page)
   end
 end
+
+RSpec.configure { |c| c.include NavigationSteps }

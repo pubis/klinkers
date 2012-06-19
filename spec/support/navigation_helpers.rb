@@ -10,3 +10,6 @@ module NavigationHelpers
     end
   end
 end
+
+
+RSpec.configure { |c| c.include NavigationHelpers }

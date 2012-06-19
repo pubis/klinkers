@@ -7,3 +7,6 @@ module FormSteps
     select(option, :from => select)
   end
 end
+
+
+RSpec.configure { |c| c.include FormSteps }

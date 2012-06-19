@@ -18,3 +18,5 @@ module UserSteps
     FactoryGirl.create(:account, :user => u)
   end
 end
+
+RSpec.configure { |c| c.include UserSteps }

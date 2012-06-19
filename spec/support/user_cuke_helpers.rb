@@ -10,3 +10,5 @@ module UserCukeHelpers
     login_as @me.username, @me.password
   end
 end
+
+RSpec.configure { |c| c.include UserCukeHelpers }
