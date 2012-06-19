@@ -84,4 +84,17 @@ describe Account do
       account.balance_as_of(Date.today).should eq(111.0)
     end
   end
+
+  context "when subclassed" do
+    class DummyAccount < Account
+    end
+
+    it "should use the parents model_name" do
+      DummyAccount.model_name.should eq("Account")
+    end
+
+    it "should be aware of the children" do
+      Account.select_options.should include("DummyAccount")
+    end
+  end
 end
