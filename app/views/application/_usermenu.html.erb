@@ -25,11 +25,11 @@
 			</li>
 
 			<% if current_user.accounts.favorites.any? %>
-			<li class="divider"></li>
-			<li class="nav-header"><%= t('navbar.accounts_menu.headers.favorites') %></li>
-			<% current_user.accounts.favorites.each do |account| %>
-			<li><%= link_to account.name, account %></li>
-			<% end %>
+				<li class="divider"></li>
+				<li class="nav-header"><%= t('navbar.accounts_menu.headers.favorites') %></li>
+				<% current_user.accounts.favorites.each do |account| %>
+					<li><%= link_to account.name, account %></li>
+				<% end %>
 			<% end %>
 		</ul>
 	</li>
