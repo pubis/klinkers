@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe User do
   context 'when first created' do
-    before(:all) do
+    before(:each) do
       @user = FactoryGirl.create(:user)
     end
     

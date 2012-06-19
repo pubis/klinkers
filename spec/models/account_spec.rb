@@ -46,7 +46,7 @@ describe Account do
   end
   
   context 'balance_as_of' do
-    before(:all) do
+    before(:each) do
       @user = FactoryGirl.create(:user)
       @payee = @user.payees.create(FactoryGirl.attributes_for(:payee, :opening_date => "1999-12-31"))
       @remote = @user.accounts.create(FactoryGirl.attributes_for(:account, :opening_date => "1999-12-31"))
