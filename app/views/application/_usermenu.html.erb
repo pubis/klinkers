@@ -1,10 +1,29 @@
 <ul class="nav">
-	<li class><%= link_to icon_tag(:home, white: true) + t('navbar.my_economy'), overview_path %></li>
+	<li>
+		<%= link_to overview_path do %>
+			<%= icon_tag :home %>
+			<%= t('navbar.my_economy') %>
+		<% end %>
+	</li>
 	<li class="dropdown">
-		<%= link_to (t('navbar.accounts') + ' ' + caret_tag).html_safe, '#', :class => 'dropdown-toggle', :data => {:toggle => 'dropdown'} %>
+		<%= link_to '#', :class => 'dropdown-toggle', :data => {:toggle => 'dropdown'} do %>
+			<%= t('navbar.accounts') %>
+			<%= caret_tag %>
+		<% end %>
 		<ul class="dropdown-menu">
-			<li><%= link_to icon_tag(:pencil, white: true) + ' ' + t('navbar.accounts_menu.new'), new_account_path %></li>
-			<li><%= link_to icon_tag(:'th-list', white: true) + ' ' + t('navbar.accounts_menu.listall'), accounts_path %></li>
+			<li>
+				<%= link_to new_account_path do %>
+					<%= icon_tag :pencil %>
+					<%= t('navbar.accounts_menu.new') %>
+				<% end %>
+			</li>
+			<li>
+				<%= link_to accounts_path do %>
+					<%= icon_tag :'th-list'  %>
+					<%= t('navbar.accounts_menu.listall') %>
+				<% end %>
+			</li>
+
 			<% if current_user.accounts.favorites.any? %>
 			<li class="divider"></li>
 			<li class="nav-header"><%= t('navbar.accounts_menu.headers.favorites') %></li>
@@ -15,9 +34,17 @@
 		</ul>
 	</li>
 	<li class="dropdown">
-		<%= link_to (t('navbar.budgets') + ' ' + caret_tag).html_safe, '#', :class => 'dropdown-toggle', :data => {:toggle => 'dropdown'} %>
+		<%= link_to '#', :class => 'dropdown-toggle', :data => {:toggle => 'dropdown'} do %>
+			<%= t('navbar.budgets') %>
+			<%= caret_tag %>
+		<% end %>
 		<ul class="dropdown-menu">
-			<li><%= link_to icon_tag(:pencil, white: true) + ' ' + t('navbar.budgets_menu.new'), new_budget_path %></li>
+			<li>
+				<%= link_to new_budget_path do %>
+					<%= icon_tag :pencil %>
+					<%= t('navbar.budgets_menu.new') %>
+				<% end %>
+			</li>
 			<% if !current_user.budget.nil? %>
 			<li class="divider"></li>
 			<li class="nav-header"><%= t('navbar.budgets_menu.headers.active') %></li>
@@ -26,20 +53,52 @@
 		</ul>
 	</li>
 	<li class="dropdown">
-		<%= link_to (t('navbar.categories') + ' ' + caret_tag).html_safe, '#', :class => 'dropdown-toggle', :data => {:toggle => 'dropdown'} %>
+		<%= link_to '#', :class => 'dropdown-toggle', :data => {:toggle => 'dropdown'} do %>
+			<%= t('navbar.categories') %>
+			<%= caret_tag %>
+		<% end %>
 		<ul class="dropdown-menu">
-			<li><%= link_to icon_tag(:pencil, white: true) + ' ' + t('navbar.categories_menu.new'), new_category_path %></li>
-			<li><%= link_to icon_tag(:'th-list', white: true) + ' ' + t('navbar.categories_menu.listall'), categories_path %></li>
+			<li>
+				<%= link_to new_category_path do %>
+					<%= icon_tag :pencil %>
+					<%= t('navbar.categories_menu.new') %>
+				<% end %>
+			</li>
+			<li>
+				<%= link_to categories_path do %>
+					<%= icon_tag :'th-list' %>
+					<%= t('navbar.categories_menu.listall') %>
+				<% end %>
+			</li>
 		</ul>
 	</li>
 </ul>
 <ul class="nav pull-right">
 	<li class="dropdown">
-		<%= link_to (icon_tag(:user) + ' ' + current_user.username + ' ' + caret_tag).html_safe, '#', :class => 'dropdown-toggle', :data => {:toggle => 'dropdown'} %>
+		<%= link_to '#', :class => 'dropdown-toggle', :data => {:toggle => 'dropdown'} do %>
+			<%= icon_tag :user %>
+			<%= current_user.username %>
+			<%= caret_tag %>
+		<% end %>
 		<ul class="dropdown-menu">
-			<li><%= link_to icon_tag(:home) + ' ' + t('navbar.user_menu.my_economy'), overview_path %></li>
-			<li><%= link_to icon_tag(:cogs) + ' ' + t('navbar.user_menu.settings'), settings_path %></li>
+			<li>
+				<%= link_to overview_path do %>
+					<%= icon_tag :home %>
+					<%= t('navbar.user_menu.my_economy') %>
+				<% end %>
+			</li>
+			<li>
+				<%= link_to settings_path do %>
+					<%= icon_tag :cogs %>
+					<%= t('navbar.user_menu.settings') %>
+				<% end %>
+			</li>
 			<li class="divider"></li>
-			<li><%= link_to icon_tag(:signout) + ' ' + t('navbar.user_menu.logout'), logout_path %></li>
+			<li>
+				<%= link_to logout_path do %>
+					<%= icon_tag :signout %>
+					<%= t('navbar.user_menu.logout') %>
+				<% end %>
+			</li>
 		</ul>
 </ul>

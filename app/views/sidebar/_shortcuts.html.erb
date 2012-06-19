@@ -1,5 +1,15 @@
-<li class="nav-header"></i><%= t('sidebar.header.shortcuts') %></li>
-	<li><%= link_to icon_tag(:pencil) + ' ' + t('sidebar.shortcuts.new_account'), new_account_path %></li>
+<li class="nav-header"><%= t('sidebar.header.shortcuts') %></li>
+	<li>
+		<%= link_to new_account_path do %>
+			<%= icon_tag :pencil %>
+			<%= t('sidebar.shortcuts.new_account') %>
+		<% end %>
+	</li>
 	<% if current_user.budget.present? %>
-	<li><%= link_to icon_tag(:calendar) + ' ' + current_user.budget.name.html_safe, current_user.budget %></li>
+	<li>
+		<%= link_to current_user.budget do %>
+			<%= icon_tag :calendar %>
+			<%= current_user.budget.name %>
+		<% end %>
+	</li>
 	<% end %>

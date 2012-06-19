@@ -1,6 +1,11 @@
 <%= content_for :sidebar do %>
 <li class="nav-header">Budgets</li>
-<li><a href="<%= new_budget_path %>"><i class="icon-pencil"></i> New</a></li>
+<li>
+	<%= link_to new_budget_path do %>
+		<%= icon_tag :pencil %>
+		<%= t('budgets.action.new') %>
+	<% end %>
+</li>
 <% end %>
 <div class="page-header">
 	<h1 id="budgets">Budgets</h1>

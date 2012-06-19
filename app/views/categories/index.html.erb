@@ -1,7 +1,10 @@
 <%= content_for :sidebar do %>
 	<li class="nav-header"><%= t('categories.sidebar.headers.categories') %></li>
 	<li>
-		<%= link_to icon_tag(:pencil) + ' ' + t('categories.sidebar.categories.new'), new_category_path %>
+		<%= link_to new_category_path do %>
+			<%= icon_tag :pencil %>
+			<%= t('categories.sidebar.categories.new') %>
+		<% end %>
 	</li>
 	<%= render "sidebar/shortcuts" %>
 <% end %>
@@ -32,10 +35,25 @@
 							<span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu">
-							<li><%= link_to icon_tag(:edit) + ' ' + t('action.edit'), edit_category_path(category) %></li>
-							<li><%= link_to icon_tag(:trash) + ' ' + t('action.delete'), category, :method => :delete, :confirm => "Are you sure?" %></li>
+							<li>
+								<%= link_to edit_category_path(category) do %>
+									<%= icon_tag :edit %>
+									<%= t('action.edit') %>
+								<% end %>
+							</li>
+							<li>
+								<%= link_to category, :method => :delete, :confirm => "Are you sure?" do %>
+									<%= icon_tag :trash %>
+									<%= t('action.delete') %>
+								<% end %>
+							</li>
 							<li class="divider"></li>
-							<li><%= link_to icon_tag(:pencil) + ' ' + t('categories.action.new_child'), new_category_path(:parent => category.id) %></li>
+							<li>
+								<%= link_to new_category_path(:parent => category.id) do %>
+									<%= icon_tag :pencil %>
+									<%= t('categories.action.new_child') %>
+								<% end %>
+							</li>
 						</ul>
 					</div>
 				</td>
@@ -54,8 +72,18 @@
 							<span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu">
-							<li><%= link_to icon_tag(:edit) + ' ' + t('action.edit'), edit_category_path(child) %></li>
-							<li><%= link_to icon_tag(:trash) + ' ' + t('action.delete'), child, :method => :delete, :confirm => "Are you sure?" %></li>
+							<li>
+								<%= link_to edit_category_path(child) do %>
+									<%= icon_tag :edit %>
+									<%= t('action.edit') %>
+								<% end %>
+							</li>
+							<li>
+								<%= link_to child, :method => :delete, :confirm => "Are you sure?" do %>
+									<%= icon_tag :trash %>
+									<%= t('action.delete') %>
+								<% end %>
+							</li>
 						</ul>
 					</div>
 				</td>
@@ -88,10 +116,25 @@
 							<span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu">
-							<li><%= link_to "<i class=\"icon-edit\"></i> #{t('action.edit')}".html_safe, edit_category_path(category) %></li>
-							<li><%= link_to "<i class=\"icon-trash\"></i> #{t('action.delete')}".html_safe, category, :method => :delete, :confirm => "Are you sure?" %></li>
+							<li>
+								<%= link_to edit_category_path(category) do %>
+									<%= icon_tag :edit %>
+									<%= t('action.edit') %>
+								<% end %>
+							</li>
+							<li>
+								<%= link_to category, :method => :delete, :confirm => "Are you sure?" do %>
+									<%= icon_tag :trash %>
+									<%= t('action.delete') %>
+								<% end %>
+							</li>
 							<li class="divider"></li>
-							<li><%= link_to "<i class=\"icon-pencil\"></i> #{t('categories.action.new_child')}".html_safe, new_category_path(:parent => category.id) %></li>
+							<li>
+								<%= link_to new_category_path(:parent => category.id) do %>
+									<%= icon_tag :pencil %>
+									<%= t('categories.action.new_child') %>
+								<% end %>
+							</li>
 						</ul>
 					</div>
 				</td>
@@ -110,8 +153,18 @@
 							<span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu">
-							<li><%= link_to "<i class=\"icon-edit\"></i> #{t('action.edit')}".html_safe, edit_category_path(child) %></li>
-							<li><%= link_to "<i class=\"icon-trash\"></i> #{t('action.delete')}".html_safe, child, :method => :delete, :confirm => "Are you sure?" %></li>
+							<li>
+								<%= link_to edit_category_path(child) do %>
+									<%= icon_tag :edit %>
+									<%= t('action.edit') %>
+								<% end %>
+							</li>
+							<li>
+								<%= link_to child, :method => :delete, :confirm => "Are you sure?" do %>
+									<%= icon_tag :trash %>
+									<%= t('action.delete') %>
+								<% end %>
+							</li>
 						</ul>
 					</div>
 				</td>
