@@ -1,7 +1,7 @@
 Feature: Sign up as a new user
 	Background:
 		Given there is a currency "Monopoly Money"
-		And I am on the front page
+		And I go to "the front page"
 		And I click "sign up"
 
 	Scenario:
