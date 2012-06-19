@@ -7,7 +7,7 @@ module NavigationSteps
     click_on button
   end
 
-  step "I go to :path" do |path|
-    visit path
+  step "I go to :page" do |page|
+    visit path_to(page)
   end
 end
