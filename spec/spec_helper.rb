@@ -43,6 +43,9 @@ Spork.prefork do
     # rspec-rails.
     config.infer_base_class_for_anonymous_controllers = false
 
+    config.include UserCukeHelpers
+    config.include NavigationHelpers
+
     config.include NavigationSteps
     config.include FormSteps
     config.include ContentSteps
