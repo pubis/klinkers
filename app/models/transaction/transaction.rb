@@ -16,6 +16,10 @@ class Transaction < ActiveRecord::Base
     :through => :transaction_items,
     :group => "transaction_items.category_id"
     
+  scope :occured_during, lambda { |date_range|
+    where(operation_date: date_range)
+  }
+
   def validate_minimum_of_two_items
     lngth = transaction_items.length
     if lngth < 2
