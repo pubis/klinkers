@@ -9,13 +9,13 @@ class BudgetCategory < ActiveRecord::Base
   end
   
   def actual_for_period(period)
-    TransactionItem.joins(:transaction).where(
-      'account_id IN (?) AND category_id = ? AND operation_date >= ? AND operation_date <= ?', 
-      budget.account_ids, 
-      category.id,
-      period.start_date,
-      period.end_date
-    ).sum(:amount).abs
+    TransactionItem
+      .joins(:transaction)
+      .where(account_id: budget.account_ids)
+      .where(category_id: category.id)
+      .merge(Transaction.occured_during(period.start_date..period.end_date))
+      .sum(:amount)
+      .abs
   end
   
   def category_name
