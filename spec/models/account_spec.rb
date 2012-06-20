@@ -12,7 +12,7 @@ describe Account do
       end
       
       it "should have opening_date today" do
-        @account.opening_date.should eq(Date.today)
+        @account.opening_date.should eq(Time.zone.today)
       end
     end
     
@@ -26,7 +26,7 @@ describe Account do
       end
       
       it "should have opening_date today" do
-        @account.opening_date.should eq(Date.today)
+        @account.opening_date.should eq(Time.zone.today)
       end
     end
 
