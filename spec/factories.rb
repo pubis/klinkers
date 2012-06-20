@@ -46,6 +46,11 @@ FactoryGirl.define do
     credit_limit 50_000
   end
 
+  factory :portfolio do
+    user
+    sequence(:name) { |n| "Portfolio #{n}" }
+  end
+
   factory :transaction do
     ignore do
       amount 100
