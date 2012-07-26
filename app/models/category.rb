@@ -36,20 +36,17 @@ class Category < ActiveRecord::Base
       end
     end
   end
-  
+
   def spending_for_period(accounts, start_date, end_date)
-    item = TransactionItem.all(
-      :select => "SUM(transaction_items.amount) AS amount",
-      :joins => ["LEFT JOIN transactions ON (transactions.id = transaction_items.transaction_id)"],
-      :conditions => [
-        "transaction_items.account_id IN (?) AND transaction_items.category_id = ? AND transactions.operation_date >= ? AND transactions.operation_date <= ?",
-        accounts.map { |a| a.id },
-        self.id,
-        start_date,
-        end_date
-      ],
-      :group => "transaction_items.category_id"
-    ).first
+    item = TransactionItem
+      .select("SUM(transaction_items.amount) AS amount")
+      .joins(:transaction)
+      .where(account_id: accounts.map { |a| a.id })
+      .where(category_id: self.id)
+      .merge(Transaction.occured_during(start_date..end_date))
+      .group(:category_id)
+      .first
+
     if item && item.amount
       item.amount.abs
     else
