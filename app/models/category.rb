@@ -37,6 +37,21 @@ class Category < ActiveRecord::Base
     end
   end
 
+  def self.with_spending_for_period(accounts, start_date, end_date)
+    Category
+      .select("categories.*, SUM(transaction_items.amount) AS amount")
+      .joins([
+          "LEFT JOIN transaction_items ON (categories.id = transaction_items.category_id)",
+          "LEFT JOIN transactions ON (transaction_items.transaction_id = transactions.id)"
+      ])
+      .where(expense: true)
+      .merge(TransactionItem.where(account_id: accounts.map { |a| a.id }))
+      .merge(Transaction.occured_during(start_date..end_date))
+      .where("amount IS NOT NULL")
+      .group("categories.id")
+      .order("amount ASC")
+  end
+
   def spending_for_period(accounts, start_date, end_date)
     item = TransactionItem
       .select("SUM(transaction_items.amount) AS amount")

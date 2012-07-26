@@ -18,27 +18,12 @@ class UsersController < ApplicationController
     account_ids = params[:accounts] || @accounts.map { |a| a.id }
 
     ids = account_ids.join(',')
-    
+
     @start_date = Date.today.beginning_of_month
     @end_date = Date.today
-    
-    @categories = Category.all(
-      :select => "categories.*, SUM(transaction_items.amount) AS amount",
-      :joins => [
-        "LEFT JOIN transaction_items ON categories.id = transaction_items.category_id",
-        "LEFT JOIN transactions ON transaction_items.transaction_id = transactions.id"
-      ],
-      :conditions => [
-        "categories.expense = ? AND amount IS NOT NULL AND transactions.operation_date >= ? AND transactions.operation_date <= ? AND transaction_items.account_id IN (?)",
-        true,
-        @start_date,
-        @end_date,
-        account_ids
-      ],
-      :group => "categories.id",
-      :order => "amount ASC"
-    )
-    
+
+    @categories = Category.with_spending_for_period(@accounts, @start_date, @end_date)
+
     @net_worths = []
     sd = Date.today.beginning_of_year
     while sd <= Date.today
