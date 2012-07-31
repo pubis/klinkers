@@ -1,28 +1,19 @@
 <div class="page-header">
 	<h1>User Settings</h1>
 </div>
-<%= form_for @user, :html => { :class => "form-horizontal" } do |f| %>
-<fieldset>
-	<div class="control-group">
-		<%= f.label :username, :class => "control-label" %>
-		<div class="controls">
-			<%= f.text_field :username, :class => "input-xlarge" %>
-		</div>
-	</div>
-	<div class="control-group">
-		<%= f.label :name, :class => "control-label" %>
-		<div class="controls">
-			<%= f.text_field :first_name, :class => "input-small", :placeholder => t('users.form.placeholders.first_name') %>
-			<%= f.text_field :last_name,  :class => "input-large", :placeholder => t('users.form.placeholders.last_name') %>
-		</div>
-	</div>
-	<div class="control-group">
-		<%= f.label Currency.model_name.human, :class => "control-label" %>
-		<div class="controls">
-			<%= f.collection_select :currency_id, Currency.all, :id, :name %>
-		</div>
-	</div>
-</fieldset>
+
+<%= simple_form_for @user, :html => { :class => "form-horizontal" } do |f| %>
+	<fieldset>
+	<%= f.input :username, :input_html => { :class => "input-xlarge" } %>
+
+	<%= f.input :name do %>
+		<%= f.input_field :first_name, placeholder: t('simple_form.placeholders.user.first_name'), class: "input-small" %>
+		<%= f.input_field :last_name, placeholder: t('simple_form.placeholders.user.last_name'), class: "input-medium"  %>
+	<% end %>
+
+	<%= f.input :currency_id, collection: Currency.all, include_blank: false, required: true  %>
+	</fieldset>
+
 	<div class="form-actions">
 		<%= f.submit "Save settings", :class => "btn btn-primary" %>
 	</div>
