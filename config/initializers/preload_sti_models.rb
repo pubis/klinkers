@@ -1,4 +1,4 @@
-if Rails.env.development?
+if Rails.env.development? && !defined?(::Rake)
   # Account children
   %w[payee portfolio loan credit_card].each do |c|
     require_dependency File.join("app","models", "account","#{c}.rb")
