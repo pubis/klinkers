@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   LANGUAGES = [
     {locale: 'en', language: 'English'},
-    {locale: 'sv-SE', language: 'Swedish'}
+    {locale: 'sv-se', language: 'Swedish'}
   ]
   
   protect_from_forgery

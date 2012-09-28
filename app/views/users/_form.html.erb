@@ -9,7 +9,7 @@
 		<%= f.input_field :last_name, placeholder: t('simple_form.placeholders.user.last_name'), class: "input-medium"  %>
 	<% end %>
 	
-	<%= f.input :language, collection: [['English', 'en'], ['Svenska', 'sv-SE']], selected: I18n.locale.to_s, required: true %>
+	<%= f.input :language, collection: [['English', 'en'], ['Svenska', 'sv-se']], selected: I18n.locale.to_s, required: true %>
 	
 	<%= f.input :currency_id, collection: Currency.all, include_blank: false, required: true  %>
 
