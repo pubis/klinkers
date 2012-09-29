@@ -1,0 +1,61 @@
+'sv-se':
+  activerecord:
+    models:
+      account: Konto
+      budget: Budget
+      category: Kategori
+      currency: Valuta
+      transaction: Transaktion
+      user: Användare
+    attributes:
+      account:
+        account_type: Kontotyp
+        name: Namn
+        number: Nummer
+        opening_balance: Öppningssaldo
+        opening_date: Öppningsdatum
+        favorite: Favorit
+        payee: Betalningsmottagare
+        system: System
+      budget:
+        name: Namn
+        interval: Intervall
+      category:
+        parent: Huvudkategori
+        name: Namn
+        description: Beskrivning
+        expense: Utgift
+      currency:
+        name: Namn
+        code: Kod
+      transaction:
+        event: Händelse
+        operation_date: Datum
+      transaction_item:
+        category: Kategori
+        payee: Mottagare
+        account: Konto
+        amount: Belopp
+        memo: Memo
+      user:
+        username: Användarnamn
+        email: Epost
+        password: Lösenord
+        name: Namn
+        first_name: Förnamn
+        last_name: Efternamn
+        language: Språk
+  simple_form:
+    placeholders:
+      user:
+        username: användare
+        email: användare@exempel.se
+        first_name: För
+        last_name: Efter
+        password: Hemligt
+        password_confirmation: Bekräfta
+  helpers:
+    submit:
+      user:
+        create: Skapa användare
+        update: Spara ändringar

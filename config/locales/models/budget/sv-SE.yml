@@ -1,8 +1,0 @@
-"sv-se":
-  activerecord:
-    models:
-      budget: Budget
-    attributes:
-      budget:
-        name: Namn
-        interval: Intervall

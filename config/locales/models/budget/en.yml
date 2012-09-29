@@ -1,8 +1,0 @@
-en:
-  activerecord:
-    models:
-      budget: Budget
-    attributes:
-      budget:
-        name: Name
-        interval: Interval

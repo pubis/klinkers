@@ -1,8 +1,0 @@
-"sv-se":
-  activerecord:
-    models:
-      currency: Valuta
-    attributes:
-      currency:
-        name: Namn
-        code: Kod

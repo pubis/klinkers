@@ -1,0 +1,61 @@
+en:
+  activerecord:
+    models:
+      account: Account
+      budget: Budget
+      category: Category
+      currency: Currency
+      transaction: Transaction
+      user: User
+    attributes:
+      account:
+        account_type: Account type
+        name: Name
+        number: Number
+        opening_balance: Opening balance
+        opening_date: Opening date
+        favorite: Favorite
+        payee: Payee
+        system: System
+      budget:
+        name: Name
+        interval: Interval
+      category:
+        parent: Parent
+        name: Name
+        description: Description
+        expense: Expense
+      currency:
+        name: Name
+        code: Code
+      transaction:
+        event: Event
+        operation_date: Date
+      transaction_item:
+        category: Category
+        payee: Payee
+        account: Account
+        amount: Amount
+        memo: Memo
+      user:
+        username: Username
+        email: Email
+        password: Password
+        name: Name
+        first_name: First name
+        last_name: Last name
+        language: Language
+  simple_form:
+    placeholders:
+      user:
+        username: user
+        email: user@example.com
+        first_name: First
+        last_name: Last
+        password: Secrect
+        password_confirmation: Confirm
+  helpers:
+    submit:
+      user:
+        create: Create user
+        update: Save changes
