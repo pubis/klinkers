@@ -30,7 +30,10 @@
 					<%= render :partial => "usermenu" if current_user %>
 					<% unless current_user %>
 					<p class="navbar-text pull-right">
-						Language: <%= I18n.locale %>.
+						Language: <%= I18n.locale %>, switch:
+						<% (I18n.available_locales - [I18n.locale, :de]).each do |l| %>
+						  <%= link_to l, url_for(locale: l) %>
+						<% end %>
 					</p>
 					<% end %>
 				</div>
