@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  include LocaleControl
+  include Tounge::LocaleControl
 
   LANGUAGES = [
     {locale: 'en', language: 'English'},
